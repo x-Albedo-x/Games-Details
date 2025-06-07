@@ -47,6 +47,19 @@
         if (sidebar) sidebar.style.display = '';
     }
 
+    function tabControl() {
+        const tabBtns = document.querySelectorAll('.tab-btn')
+        const tabContents = document.querySelectorAll('.tab-content')
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'))
+                btn.classList.add('active')
+                tabContents.forEach(tc => tc.style.display = 'none')
+                document.getElementById('tab-' + btn.dataset.tab).style.display = 'block'
+            })
+        })
+    }
+
     // MAIN FUNCTIONS
     async function loadGameData() {
         try {
@@ -549,7 +562,10 @@
 
     // EVENT LISTENERS
     function eventListeners() {
-        document.addEventListener('DOMContentLoaded', loadGameData);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGameData()
+            tabControl()
+        });
     }
 
     eventListeners();

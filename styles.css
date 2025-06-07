@@ -184,6 +184,39 @@ body::before {
   box-shadow: 0 10px 25px rgba(102, 217, 239, 0.3);
 }
 
+.m-2rem {
+  margin: 2rem;
+}
+
+/* Tab Bar Styles */
+.tab-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  justify-content: center;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: #a6e3a1;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: linear-gradient(45deg, #66d9ef, #a6e3a1);
+  color: #000;
+}
+
 /* Container principal */
 .container {
   display: grid;
