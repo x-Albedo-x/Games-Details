@@ -7,7 +7,6 @@
     <title>Steam Game Explorer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <script src="../js/games_info.js" defer></script>
 </head>
 
 <body>
@@ -24,6 +23,10 @@
     </header>
 
     <div class="page active" id="game-info">
+        <div id="gameLoader" class="loading" style="display:none; text-align:center; padding:2rem;">
+            <div class="spinner" style="margin:0 auto;"></div>
+            <p style="margin-top:1rem; color:rgba(255,255,255,0.6);">Cargando...</p>
+        </div>
         <div class="container">
             <!-- Sección principal -->
             <div class="main-section">
@@ -35,9 +38,8 @@
                                 style="width: 100%; height: auto; border-radius: 10px;">
                         </div>
                         <div class="featured-info">
-                            <h3 id="gameName">Counter-Strike 2</h3>
-                            <p id="gameDescription">For over two decades, Counter-Strike has offered an elite
-                                competitive experience...</p>
+                            <h3 id="gameName"></h3>
+                            <p id="gameDescription"></p>
                             <div class="featured-tags" id="gameTagsContainer">
                                 <!-- Tags se generarán dinámicamente -->
                             </div>
@@ -122,7 +124,6 @@
             </div>
         </div>
     </div>
-
+    <script src="../js/games_info.js" defer></script>
 </body>
-
 </html>

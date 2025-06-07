@@ -29,23 +29,29 @@
         }
     }
 
-    function showLoadingState(containerId) {
-        const container = document.getElementById(containerId);
-        if (container) {
-            container.innerHTML = `
-                <div class="loading" style="text-align: center; padding: 2rem;">
-                    <div class="spinner" style="margin: 0 auto;"></div>
-                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.6);">Cargando...</p>
-                </div>
-            `;
-        }
+    function showLoadingState() {
+        const loader = document.getElementById('gameLoader');
+        if (loader) loader.style.display = 'block';
+        const mainSection = document.querySelector('.main-section');
+        if (mainSection) mainSection.style.display = 'none';
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) sidebar.style.display = 'none';
+    }
+
+    function hideLoadingState() {
+        const loader = document.getElementById('gameLoader');
+        if (loader) loader.style.display = 'none';
+        const mainSection = document.querySelector('.main-section');
+        if (mainSection) mainSection.style.display = '';
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) sidebar.style.display = '';
     }
 
     // MAIN FUNCTIONS
     async function loadGameData() {
         try {
             // Mostrar estados de carga
-            showLoadingState('game-info');
+            showLoadingState();
 
             // const response = await fetch(`https://games-details.p.rapidapi.com/gameinfo/single_game/${gameID}`, {
             //     method: 'GET',
@@ -59,72 +65,14 @@
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
-
+            
             const result = await response.json();
             console.log('Datos recibidos:', result);
 
             gameData = result.data;
 
-            // Limpiar estado de carga
-            document.getElementById('game-info').innerHTML = `
-                <div class="container">
-                    <div class="main-section">
-                        <div class="section">
-                            <div class="featured-content">
-                                <div class="featured-image">
-                                    <img id="gameMainImage" src="" alt="Game Screenshot" style="width: 100%; height: auto; border-radius: 10px;">
-                                </div>
-                                <div class="featured-info">
-                                    <h3 id="gameName"></h3>
-                                    <p id="gameDescription"></p>
-                                    <div class="featured-tags" id="gameTagsContainer"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <h2>📋 Información del Juego</h2>
-                            <div class="game-details" id="gameDetails"></div>
-                        </div>
-                        <div class="section">
-                            <h2>📖 Acerca del Juego</h2>
-                            <div class="content-placeholder">
-                                <p id="aboutGame"></p>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <h2>🖼️ Capturas de Pantalla</h2>
-                            <div class="gallery" id="screenshotsGallery"></div>
-                        </div>
-                        <div class="section">
-                            <h2>🎬 Videos</h2>
-                            <div class="video-grid" id="videosContainer"></div>
-                        </div>
-                        <div class="section">
-                            <h2>💻 Requisitos del Sistema</h2>
-                            <div class="requirements-grid" id="systemRequirements"></div>
-                        </div>
-                    </div>
-                    <div class="sidebar">
-                        <div class="section">
-                            <h2>💰 Precios</h2>
-                            <div id="pricingContainer"></div>
-                        </div>
-                        <div class="section">
-                            <h2>🔗 Enlaces</h2>
-                            <div id="externalLinksContainer"></div>
-                        </div>
-                        <div class="section">
-                            <h2>👨‍💻 Desarrollador</h2>
-                            <div class="game-details" id="developerDetails"></div>
-                        </div>
-                        <div class="section">
-                            <h2>🌍 Idiomas</h2>
-                            <div class="tags-container" id="languagesContainer"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
+            // Ocultar carga
+            hideLoadingState();
             // Procesar datos con validaciones
             processGameData();
 
