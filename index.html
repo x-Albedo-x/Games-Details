@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steam Game Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./js/index.js" defer></script>
+</head>
+
+<body>
+  <!-- Header fijo con navegación -->
+  <header class="header">
+    <div class="header-content">
+      <h1>Steam Game Explorer</h1>
+      <nav class="nav-menu">
+        <a href="./index.html" class="nav-btn active">🏠 Inicio</a>
+        <a href="./pages/media.html" class="nav-btn">📸 Media</a>
+        <a href="./pages/community.html" class="nav-btn">👥 Comunidad</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Página de Inicio -->
+  <div class="page active" id="home">
+    <div class="search-section">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar un juego en Steam..." id="searchInput">
+        <button class="search-btn" id="searchButton">🔍</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="welcome-section">
+        <div class="section featured-game">
+          <h2>🌟 Juego Destacado</h2>
+          <div class="featured-content">
+            <div class="featured-image">
+              <div class="game-placeholder">
+                <span class="game-icon">🎮</span>
+              </div>
+            </div>
+            <div class="featured-info">
+              <h3>Selecciona un juego para comenzar</h3>
+              <p>Usa la barra de búsqueda para encontrar información detallada sobre cualquier juego de Steam.</p>
+              <div class="featured-tags">
+                <span class="tag">🔥 Popular</span>
+                <span class="tag">⭐ Mejor Valorado</span>
+                <span class="tag">🆕 Nuevo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+              <h3>Estadísticas</h3>
+              <p>Análisis detallado del juego</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-info">
+              <h3>Logros</h3>
+              <p>Sistema de logros completo</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💬</div>
+            <div class="stat-info">
+              <h3>Reseñas</h3>
+              <p>Opiniones de la comunidad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Página de Información del Juego -->
+  <div class="page" id="game-info">
+    <div class="container">
+      <div class="main-section">
+        <div class="section">
+          <h2>📋 Información General</h2>
+          <div class="game-details">
+            <div class="detail-item">
+              <strong>Nombre:</strong> <span id="gameName">Selecciona un juego</span>
+            </div>
+            <div class="detail-item">
+              <strong>Desarrollador:</strong> <span id="developer">-</span>
+            </div>
+            <div class="detail-item">
+              <strong>Fecha de lanzamiento:</strong> <span id="releaseDate">-</span>
+            </div>
+            <div class="detail-item">
+              <strong>Precio:</strong> <span id="price">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>📝 Descripción</h2>
+          <div class="content-placeholder">
+            <p id="gameDescription">La descripción del juego aparecerá aquí una vez que realices una búsqueda.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>🏷️ Tags y Categorías</h2>
+          <div class="tags-container" id="gameTags">
+            <span class="tag">Acción</span>
+            <span class="tag">Aventura</span>
+            <span class="tag">Multijugador</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>⚙️ Requisitos del Sistema</h2>
+          <div class="requirements-grid">
+            <div class="req-section">
+              <h3>Mínimos</h3>
+              <div class="content-placeholder">
+                <p>Requisitos mínimos del sistema</p>
+              </div>
+            </div>
+            <div class="req-section">
+              <h3>Recomendados</h3>
+              <div class="content-placeholder">
+                <p>Requisitos recomendados del sistema</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="section">
+          <h2>🏢 Desarrollador</h2>
+          <div class="content-placeholder">
+            <p>Información del desarrollador y publisher</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>🔗 Enlaces</h2>
+          <a href="#" class="external-link">
+            <span>🌐</span>
+            <span>Sitio Web</span>
+          </a>
+          <a href="#" class="external-link">
+            <span>🎮</span>
+            <span>Steam</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Página de Media -->
+  <div class="page" id="media">
+    <div class="container">
+      <div class="section">
+        <h2>📸 Screenshots</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <div class="gallery-placeholder">🖼️</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">🖼️</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">🖼️</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-placeholder">🖼️</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎥 Videos y Trailers</h2>
+        <div class="video-grid">
+          <div class="video-item">
+            <div class="video-placeholder">
+              <span class="play-icon">▶️</span>
+              <p>Trailer Oficial</p>
+            </div>
+          </div>
+          <div class="video-item">
+            <div class="video-placeholder">
+              <span class="play-icon">▶️</span>
+              <p>Gameplay</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Página de Comunidad -->
+  <div class="page" id="community">
+    <div class="container">
+      <div class="main-section">
+        <div class="section">
+          <h2>📰 Noticias Recientes</h2>
+          <div class="news-list">
+            <div class="news-item">
+              <div class="news-date">Hace 2 días</div>
+              <h3>Actualización disponible</h3>
+              <p>Nueva actualización con mejoras y correcciones.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">Hace 1 semana</div>
+              <h3>Evento especial</h3>
+              <p>Evento temporal con recompensas exclusivas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>⭐ Reseñas</h2>
+          <div class="reviews-container">
+            <div class="review-item">
+              <div class="review-header">
+                <span class="review-rating">⭐⭐⭐⭐⭐</span>
+                <span class="review-date">Hace 3 días</span>
+              </div>
+              <p>"Excelente juego, muy recomendado."</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <span class="review-rating">⭐⭐⭐⭐</span>
+                <span class="review-date">Hace 1 semana</span>
+              </div>
+              <p>"Muy bueno, aunque podría mejorar en algunos aspectos."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="section">
+          <h2>📚 Guías Populares</h2>
+          <div class="guide-list">
+            <div class="guide-item">
+              <h4>Guía para principiantes</h4>
+              <p>Por: Usuario123</p>
+            </div>
+            <div class="guide-item">
+              <h4>Trucos y consejos</h4>
+              <p>Por: ProGamer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Página de Juegos Similares -->
+  <div class="page" id="similar">
+    <div class="container">
+      <div class="section">
+        <h2>🔍 Juegos Similares</h2>
+        <div class="similar-games-grid">
+          <div class="game-card">
+            <div class="game-image">🎮</div>
+            <div class="game-info">
+              <h3>Juego Similar 1</h3>
+              <p>Descripción breve del juego</p>
+              <div class="game-rating">⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <div class="game-card">
+            <div class="game-image">🎮</div>
+            <div class="game-info">
+              <h3>Juego Similar 2</h3>
+              <p>Descripción breve del juego</p>
+              <div class="game-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <div class="game-card">
+            <div class="game-image">🎮</div>
+            <div class="game-info">
+              <h3>Juego Similar 3</h3>
+              <p>Descripción breve del juego</p>
+              <div class="game-rating">⭐⭐⭐</div>
+            </div>
+          </div>
+          <div class="game-card">
+            <div class="game-image">🎮</div>
+            <div class="game-info">
+              <h3>Juego Similar 4</h3>
+              <p>Descripción breve del juego</p>
+              <div class="game-rating">⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🏆 Recomendaciones Personalizadas</h2>
+        <div class="recommendations">
+          <div class="recommendation-item">
+            <span class="rec-icon">🎯</span>
+            <div class="rec-content">
+              <h4>Basado en tus preferencias</h4>
+              <p>Juegos que podrían gustarte según tu historial</p>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <span class="rec-icon">🔥</span>
+            <div class="rec-content">
+              <h4>Tendencias actuales</h4>
+              <p>Los juegos más populares en este momento</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script>
+    // Sistema de navegación entre páginas
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const pages = document.querySelectorAll('.page');
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetPage = button.getAttribute('data-page');
+
+        // Remover clase active de todos los botones y páginas
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        pages.forEach(page => page.classList.remove('active'));
+
+        // Agregar clase active al botón y página seleccionados
+        button.classList.add('active');
+        document.getElementById(targetPage).classList.add('active');
+
+        // Scroll suave al inicio de la página
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Funcionalidad de búsqueda
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.querySelector('.search-btn');
+
+    searchBtn.addEventListener('click', () => {
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        // Simular búsqueda y actualizar contenido
+        updateGameInfo(searchTerm);
+        // Cambiar a la página de información del juego
+        document.querySelector('[data-page="game-info"]').click();
+      }
+    });
+
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        searchBtn.click();
+      }
+    });
+
+    // Función para actualizar información del juego (placeholder)
+    function updateGameInfo(gameName) {
+      document.getElementById('gameName').textContent = gameName;
+      document.getElementById('gameDescription').textContent = `Información detallada sobre ${gameName} se cargará aquí cuando se conecte con la API.`;
+    }
+
+    // Animaciones de entrada
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Aplicar animaciones a elementos
+    document.querySelectorAll('.section, .game-card, .stat-card').forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(element);
+    });
+  </script> -->
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{
+    "status": 200,
+    "message": "success",
+    "data": {
+        "search": [
+            {
+                "id": "730",
+                "name": "Counter-Strike 2",
+                "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_231x87.jpg?t=1729703045",
+                "price": "Free"
+            },
+            {
+                "id": "3418500",
+                "name": "CS Manager",
+                "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3418500/63a888abf5e7ada8aebebcf72a8ef490dd147b30/capsule_231x87.jpg?t=1740445247",
+                "price": "comming soon"
+            },
+            {
+                "id": "666220",
+                "name": "CS2D",
+                "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/666220/capsule_231x87.jpg?t=1743163970",
+                "price": "Free"
+            },
+            {
+                "name": "DariusBurst CS Super Saviours Pack",
+                "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/bundles/23404/pshrd870d74piuze/capsule_231x87.jpg?t=1635382296",
+                "price": "$118.83"
+            },
+            {
+                "id": "3399350",
+                "name": "CS Diamantes Pipas: DLC PASE Member",
+                "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3399350/b3ff7bb30edfee4302d1a59de4b7efecea99a017/capsule_231x87.jpg?t=1735026357",
+                "price": "$24.99"
+            }
+        ],
+        "total": 5
+    }
+}

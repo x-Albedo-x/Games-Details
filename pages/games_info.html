@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Game Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../js/games_info.js" defer></script>
+</head>
+
+<body>
+    <!-- Header fijo con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Steam Game Explorer</h1>
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-btn">🏠 Inicio</a>
+                <a href="../pages/media.html" class="nav-btn">📸 Media</a>
+                <a href="../pages/community.html" class="nav-btn">👥 Comunidad</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page active" id="game-info">
+        <div class="container">
+            <!-- Sección principal -->
+            <div class="main-section">
+                <!-- Hero section del juego -->
+                <div class="section">
+                    <div class="featured-content">
+                        <div class="featured-image">
+                            <img id="gameMainImage" src="" alt="Game Screenshot"
+                                style="width: 100%; height: auto; border-radius: 10px;">
+                        </div>
+                        <div class="featured-info">
+                            <h3 id="gameName">Counter-Strike 2</h3>
+                            <p id="gameDescription">For over two decades, Counter-Strike has offered an elite
+                                competitive experience...</p>
+                            <div class="featured-tags" id="gameTagsContainer">
+                                <!-- Tags se generarán dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información del juego -->
+                <div class="section">
+                    <h2>📋 Información del Juego</h2>
+                    <div class="game-details" id="gameDetails">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Acerca del juego -->
+                <div class="section">
+                    <h2>📖 Acerca del Juego</h2>
+                    <div class="content-placeholder">
+                        <p id="aboutGame">About This Game content will be loaded here...</p>
+                    </div>
+                </div>
+
+                <!-- Screenshots -->
+                <div class="section">
+                    <h2>🖼️ Capturas de Pantalla</h2>
+                    <div class="gallery" id="screenshotsGallery">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Videos -->
+                <div class="section">
+                    <h2>🎬 Videos</h2>
+                    <div class="video-grid" id="videosContainer">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Requisitos del sistema -->
+                <div class="section">
+                    <h2>💻 Requisitos del Sistema</h2>
+                    <div class="requirements-grid" id="systemRequirements">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Opciones de compra -->
+                <div class="section">
+                    <h2>💰 Precios</h2>
+                    <div id="pricingContainer">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Enlaces externos -->
+                <div class="section">
+                    <h2>🔗 Enlaces</h2>
+                    <div id="externalLinksContainer">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Detalles del desarrollador -->
+                <div class="section">
+                    <h2>👨‍💻 Desarrollador</h2>
+                    <div class="game-details" id="developerDetails">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Idiomas -->
+                <div class="section">
+                    <h2>🌍 Idiomas</h2>
+                    <div class="tags-container" id="languagesContainer">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
