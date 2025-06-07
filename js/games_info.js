@@ -47,19 +47,6 @@
         if (sidebar) sidebar.style.display = '';
     }
 
-    function tabControl() {
-        const tabBtns = document.querySelectorAll('.tab-btn')
-        const tabContents = document.querySelectorAll('.tab-content')
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'))
-                btn.classList.add('active')
-                tabContents.forEach(tc => tc.style.display = 'none')
-                document.getElementById('tab-' + btn.dataset.tab).style.display = 'block'
-            })
-        })
-    }
-
     // MAIN FUNCTIONS
     async function loadGameData() {
         try {
@@ -434,7 +421,7 @@
     function showErrorState() {
         const container = document.getElementById('game-info');
         container.innerHTML = `
-            <div class="container" style="text-align: center; padding: 4rem 2rem;">
+            <div class="container" style="display: block; text-align: center; padding: 4rem 2rem;">
                 <div class="section">
                     <h2 style="color: #ff6b6b; margin-bottom: 1rem;">⚠️ Error al cargar el juego</h2>
                     <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
@@ -562,10 +549,7 @@
 
     // EVENT LISTENERS
     function eventListeners() {
-        document.addEventListener('DOMContentLoaded', () => {
-            loadGameData()
-            tabControl()
-        });
+        document.addEventListener('DOMContentLoaded', loadGameData)
     }
 
     eventListeners();
