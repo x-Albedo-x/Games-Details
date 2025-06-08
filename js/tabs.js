@@ -151,13 +151,11 @@ const loadGuides = async (filter = 'recent', page = 1) => {
         const prevBtn = document.getElementById('guidePrev')
         const nextBtn = document.getElementById('guideNext')
         const pagination = document.getElementById('guidePagination')
-
-        if (guidePageInfo && prevBtn && nextBtn && pagination) {
-            guidePageInfo.textContent = `Página ${guideCurrentPage} de ${guideTotalPages}`
-            prevBtn.disabled = guideCurrentPage === 1
-            nextBtn.disabled = guideCurrentPage === guideTotalPages
-            pagination.style.display = guideTotalPages > 1 ? 'flex' : 'none'
-        }
+        
+        guidePageInfo.textContent = `Página ${guideCurrentPage} de ${guideTotalPages}`
+        prevBtn.disabled = guideCurrentPage === 1
+        nextBtn.disabled = guideCurrentPage === guideTotalPages
+        pagination.style.display = guideTotalPages > 1 ? 'flex' : 'none'
     } catch (error) {
         console.error('Error cargando datos del juego:', error)
         showErrorState()
@@ -186,8 +184,9 @@ document.getElementById('guideNext').addEventListener('click', () => {
 
 // RESEÑAS
 const loadReviews = async (filter = "recent") => {
-    let response, result, reviews = []
     try {
+        let response, result, reviews = []
+
         if(filter === 'recent') {
             // const url = 'https://games-details.p.rapidapi.com/reviews/mostrecent/730?limit=30&offset=0';
             // response = await fetch(url, options)
@@ -275,9 +274,15 @@ document.getElementById('reviewSort').addEventListener('change', () => {
 })
 
 // ARTWORK
-const loadArtwork = async () => {
-    let result, art = []
+let artworkCurrentPage = 1
+let artworkTotalPages = 1
+
+const loadArtwork = async (page = 1) => {
+    artworkCurrentPage = page
+    
     try {
+        let result, art = []
+
         // const url = 'https://games-details.p.rapidapi.com/media/artworks/730?limit=30&offset=0'
         // const response = fetch(url, options)
         const response = await fetch('../db/artworks.json') 
@@ -295,8 +300,16 @@ const loadArtwork = async () => {
         if(art.length === 0) {
             artworkGallery.innerHTML = '<div class="content-placeholder">No hay reseñas disponibles.</div>'
         }
+        console.log(art.length)
+        console.log(Math.ceil(art.length / 24))
+        artworkTotalPages = Math.ceil(art.length / 24)
+        artworkCurrentPage = Math.max(1, Math.min(page, artworkTotalPages))
+        
+        const start = (artworkCurrentPage - 1) * 24
+        const end = start + 24
+        const artGuides = art.slice(start, end)
 
-        art.forEach(art => {
+        artGuides.forEach(art => {
             const item = document.createElement('div')
             item.innerHTML = `
                 <img class="artwork-img" src="${art}">
@@ -308,6 +321,17 @@ const loadArtwork = async () => {
 
             artworkGallery.appendChild(item)
         })
+
+        // Actualizar paginación
+        const artworkPageInfo = document.getElementById('artworkPageInfo')
+        const prevBtn = document.getElementById('artworkPrev')
+        const nextBtn = document.getElementById('artworkNext')
+        const pagination = document.getElementById('artworkPagination')
+        
+        artworkPageInfo.textContent = `Página ${artworkCurrentPage} de ${artworkTotalPages}`
+        prevBtn.disabled = artworkCurrentPage === 1
+        nextBtn.disabled = artworkCurrentPage === artworkTotalPages
+        pagination.style.display = artworkTotalPages > 1 ? 'flex' : 'none'
     } catch(error) {
         console.log('Error cargando datos del juego: ', error)
         showErrorState()
@@ -333,6 +357,7 @@ const openArtworkModal = (imgUrl) => {
     document.addEventListener('keydown', escCloseArtworkModal)
 }
 
+// Cerrar imagen
 const closeArtworkModal = () => {
     const overlay = document.getElementById('artwork-modal-overlay')
     if(overlay) overlay.remove()
@@ -342,6 +367,19 @@ const closeArtworkModal = () => {
 const escCloseArtworkModal = (e) => {
     if(e.key === 'Escape') closeArtworkModal()
 }
+
+// Eventos de paginación
+document.getElementById('artworkPrev').addEventListener('click', () => {
+    if (artworkCurrentPage > 1) {
+        loadArtwork(artworkCurrentPage - 1)
+    }
+})
+
+document.getElementById('artworkNext').addEventListener('click', () => {
+    if (artworkCurrentPage < artworkTotalPages) {
+        loadArtwork(artworkCurrentPage + 1)
+    }
+})
 
 // ERROR DE CARGA
 const showErrorState = () => {

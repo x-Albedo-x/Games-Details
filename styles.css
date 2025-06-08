@@ -799,7 +799,7 @@ body::before {
 
 .artwork-img {
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
   max-height: 220px;
   aspect-ratio: 16/9;
   object-fit: cover;
@@ -856,6 +856,23 @@ body::before {
 
 .artwork-modal-close:hover {
   color: #f38ba8;
+}
+
+.artwork-tab-btn {
+  background: none;
+  border: none;
+  color: #a6e3a1;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.artwork-tab-btn.active, .artwork-tab-btn:hover {
+  background: linear-gradient(45deg, #66d9ef, #a6e3a1);
+  color: #000;
 }
 
 /* Recomendaciones */
