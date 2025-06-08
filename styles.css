@@ -615,6 +615,31 @@ body::before {
 }
 
 /* Noticias */
+.news-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-start;
+}
+
+.news-type-btn {
+  background: none;
+  border: none;
+  color: #a6e3a1;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.news-type-btn.active,
+.news-type-btn:hover {
+  background: linear-gradient(45deg, #66d9ef, #a6e3a1);
+  color: #000;
+}
+
 .news-list {
   display: flex;
   flex-direction: column;

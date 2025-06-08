@@ -42,13 +42,19 @@ const options = {
 }
 
 // NOTICIAS
-const loadNews = async () => {
+const loadNews = async (type='all') => {
     try {
-        // const url = `https://games-details.p.rapidapi.com/news/announcements/${gameID}?limit=10&offset=0`
-        // const response = await fetch(url, options)
-
-        const response = await fetch('../db/news.json')
-
+        let response
+        if(type === 'all') {
+            // const url = `https://games-details.p.rapidapi.com/news/all/${gameID}?limit=10&offset=0`
+            // const response = await fetch(url, options)
+            response = await fetch('../db/news_all.json')
+        } else {
+            // const url = `https://games-details.p.rapidapi.com/news/announcements/${gameID}?limit=10&offset=0`
+            // const response = await fetch(url, options)
+            response = await fetch('../db/news_official.json')
+        }
+        
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
@@ -82,6 +88,20 @@ const loadNews = async () => {
         console.error('Error cargando datos del juego:', error)
         showErrorState()
     }
+}
+
+// Tabs de noticias
+const newsControl =  () => {
+    const newsBtns = document.querySelectorAll('.news-type-btn')
+    newsBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            newsBtns.forEach(b => b.classList.remove('active'))
+            btn.classList.add('active')
+            loadNews(btn.dataset.type)
+        })
+    })
+
+    loadNews('all')
 }
 
 // GUÍAS
@@ -452,4 +472,5 @@ const showErrorState = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     tabControl()
+    newsControl()
 })
