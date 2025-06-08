@@ -28,6 +28,10 @@ const tabControl = () => {
     })
 }
 
+// ID DEL JUEGO
+const params = new URLSearchParams(window.location.search)
+let gameID = params.get('id')
+
 // VARIABLE OPTIONS
 const options = {
     method: 'GET',
@@ -40,7 +44,7 @@ const options = {
 // NOTICIAS
 const loadNews = async () => {
     try {
-        // const url = 'https://games-details.p.rapidapi.com/news/announcements/730?limit=10&offset=0';
+        // const url = `https://games-details.p.rapidapi.com/news/announcements/${gameID}?limit=10&offset=0`
         // const response = await fetch(url, options)
 
         const response = await fetch('../db/news.json')
@@ -93,19 +97,19 @@ const loadGuides = async (filter = 'recent', page = 1) => {
         let response, result, guides = []
 
         if(filter === 'recent') {
-            // const url = 'https://games-details.p.rapidapi.com/guides/mostrecent/730?language=english&limit=30&offset=0'
+            // const url = `https://games-details.p.rapidapi.com/guides/mostrecent/${gameID}?language=english&limit=30&offset=0`
             // response = await fetch(url, options)
 
             response = await fetch('../db/guide_recent.json')
         }
         else if(filter === 'top') {
-            // const url = 'https://games-details.p.rapidapi.com/guides/toprated/730?language=english&limit=30&offset=0'
+            // const url = `https://games-details.p.rapidapi.com/guides/toprated/${gameID}?language=english&limit=30&offset=0`
             // response = await fetch(url, options)
             
             response = await fetch('../db/guide_top.json')
         }
         else if(filter === 'trending') {
-            // const url = 'https://games-details.p.rapidapi.com/guides/trend/730?limit=30&offset=0&language=english'
+            // const url = `https://games-details.p.rapidapi.com/guides/trend/${gameID}?limit=30&offset=0&language=english`
             // response = await fetch(url, options)
             response = await fetch('../db/guide_trending.json')
         }
@@ -191,38 +195,38 @@ const loadReviews = async (filter = "recent") => {
         let response, result, reviews = []
 
         if(filter === 'recent') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/mostrecent/730?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/mostrecent/${gameID}?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_recent.json')
         }
         else if(filter === 'top') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/toprated/730?limit=30&offset=0'
+            // const url = `https://games-details.p.rapidapi.com/reviews/toprated/${gameID}?limit=30&offset=0`
             // }
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_top.json')
         }
         else if(filter === 'day') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/trendday/730?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/trendday/${gameID}?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_day.json')
         }
         else if(filter === 'week') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/trendweek/730/?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/trendweek/${gameID}/?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_week.json')
         }
         else if(filter === 'month') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/trendmonth/730/?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/trendmonth/${gameID}/?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_month.json')
         }
         else if(filter === 'year') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/trendyear/730/?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/trendyear/${gameID}/?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_year.json')
         }
         else if(filter === 'funny') {
-            // const url = 'https://games-details.p.rapidapi.com/reviews/funny/730/?limit=30&offset=0';
+            // const url = `https://games-details.p.rapidapi.com/reviews/funny/${gameID}/?limit=30&offset=0`
             // response = await fetch(url, options)
             response = await fetch('../db/reviews_funny.json')
         }
@@ -286,7 +290,7 @@ const loadArtwork = async (page = 1) => {
     try {
         let result, art = []
 
-        // const url = 'https://games-details.p.rapidapi.com/media/artworks/730?limit=30&offset=0'
+        // const url = `https://games-details.p.rapidapi.com/media/artworks/${gameID}?limit=30&offset=0`
         // const response = fetch(url, options)
         const response = await fetch('../db/artworks.json') 
         
@@ -389,7 +393,7 @@ const loadStreams = async () => {
     try {
         let streams = []
 
-        // const url = 'https://games-details.p.rapidapi.com/media/broadcasts/730?limit=30&offset=0'
+        // const url = `https://games-details.p.rapidapi.com/media/broadcasts/${gameID}?limit=30&offset=0`
         // const response = fetch(url, options)
         const response = await fetch('../db/broadcasts.json') 
         

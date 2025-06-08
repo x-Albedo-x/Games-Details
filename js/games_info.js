@@ -294,7 +294,7 @@
             return;
         }
 
-        screenshots.slice(0, 6).forEach((screenshot, index) => {
+        screenshots.slice(0, 12).forEach((screenshot, index) => {
             if (screenshot && typeof screenshot === 'string') {
                 const imgElement = document.createElement('div');
                 imgElement.className = 'gallery-item';
