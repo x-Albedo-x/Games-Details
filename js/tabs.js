@@ -81,7 +81,7 @@ const loadGuides = async (filter = 'recent', page = 1) => {
         let response, result, guides = []
 
         if(filter === 'recent') {
-            // const url = 'https://games-details.p.rapidapi.com/guides/mostrecent/730?language=english&limit=10&offset=0'
+            // const url = 'https://games-details.p.rapidapi.com/guides/mostrecent/730?language=english&limit=30&offset=0'
             // const options = {
             //     method: 'GET',
             //     headers: {
@@ -94,17 +94,50 @@ const loadGuides = async (filter = 'recent', page = 1) => {
             response = await fetch('../db/guide_recent.json')
 
             if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
+                throw new Error(`Error HTTP: ${response.status}`)
             }
 
             result = await response.json()
             console.log(result)
         }
         else if(filter === 'top') {
+            // const url = 'https://games-details.p.rapidapi.com/guides/toprated/730?language=english&limit=30&offset=0'
+            // const options = {
+            //     method: 'GET',
+            //     headers: {
+            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
+            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
+            //     }
+            // }
+            // response = await fetch(url, options)
+            
+            response = await fetch('../db/guide_top.json')
 
+            if(!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`)
+            }
+
+            result = await response.json()
+            console.log(result)
         }
         else if(filter === 'trending') {
+            // const url = 'https://games-details.p.rapidapi.com/guides/trend/730?limit=30&offset=0&language=english'
+            // const options = {
+            //     method: 'GET',
+            //     headers: {
+            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
+            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
+            //     }
+            // }
+            // response = await fetch(url, options)
+            response = await fetch('../db/guide_trending.json')
 
+            if(!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`)
+            }
+
+            result = await response.json()
+            console.log(result)
         }
 
         const guideList = document.getElementById('guideList')
@@ -160,7 +193,9 @@ const loadGuides = async (filter = 'recent', page = 1) => {
 
 //Cambiar filtro
 document.getElementById('guideSort').addEventListener('change', () => {
-    loadGuides(this.value, 1)
+    const filter = document.getElementById('guideSort').value;
+    guideCurrentPage = 1; // Reiniciar a la primera página al cambiar el filtro
+    loadGuides(filter, guideCurrentPage);
 })
 
 // Eventos de paginación
