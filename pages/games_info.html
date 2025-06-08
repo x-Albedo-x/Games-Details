@@ -152,8 +152,22 @@
         <div class="tab-content" id="tab-guides" style="display:none;">
             <div class="section m-2rem">
                 <h2>📚 Guías</h2>
+                <!-- Selector de filtro para guías -->
+                <div class="guide-filter" style="margin-bottom: 1rem;">
+                    <label for="guideSort" style="margin-right: 0.5rem; color:#a6e3a1;">Ordenar por:</label>
+                    <select id="guideSort" class="tab-select">
+                        <option value="recent">Más recientes</option>
+                        <option value="top">Mejor valoradas</option>
+                        <option value="trending">Tendencias</option>
+                    </select>
+                </div>
                 <div class="guide-list" id="guideList">
                     <!-- Guías se llenarán dinámicamente -->
+                </div>
+                <div class="guide-pagination" id="guidePagination" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                    <button id="guidePrev" class="guide-tab-btn" disabled>Anterior</button>
+                    <span id="guidePageInfo" style="color:#a6e3a1; align-self: center;"></span>
+                    <button id="guideNext" class="guide-tab-btn">Siguiente</button>
                 </div>
             </div>
         </div>

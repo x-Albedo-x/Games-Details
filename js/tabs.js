@@ -11,6 +11,9 @@ const tabControl = () => {
             if(btn.dataset.tab == 'news') {
                 loadNews()
             }
+            else if(btn.dataset.tab === 'guides') {
+                loadGuides()
+            }
         })
     })
 }
@@ -60,11 +63,120 @@ const loadNews = async () => {
             newList.append(item)
         })
     } catch (error) {
-        console.error('Error cargando datos del juego:', error);
-        showErrorState();
+        console.error('Error cargando datos del juego:', error)
+        showErrorState()
     }
 }
 
+// GUÍAS
+let guideLastFilter = 'recent'
+let guideCurrentPage = 1
+let guideTotalPages = 1
+
+const loadGuides = async (filter = 'recent', page = 1) => {
+    guideLastFilter = filter
+    guideCurrentPage = page
+
+    try {
+        let response, result, guides = []
+
+        if(filter === 'recent') {
+            // const url = 'https://games-details.p.rapidapi.com/guides/mostrecent/730?language=english&limit=10&offset=0'
+            // const options = {
+            //     method: 'GET',
+            //     headers: {
+            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
+            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
+            //     }
+            // }
+            // response = await fetch(url, options)
+
+            response = await fetch('../db/guide_recent.json')
+
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+
+            result = await response.json()
+            console.log(result)
+        }
+        else if(filter === 'top') {
+
+        }
+        else if(filter === 'trending') {
+
+        }
+
+        const guideList = document.getElementById('guideList')
+        guideList.innerHTML = ''
+
+        guides = result.data.guides || []
+
+        if(guides.length === 0) {
+            guideList.innerHTML = '<div class="content-placeholder">No hay guías disponibles.</div>';
+            return;
+        }
+
+        guideTotalPages = Math.ceil(guides.length / 12)
+        guideCurrentPage = Math.max(1, Math.min(page, guideTotalPages))
+
+        let start = (guideCurrentPage - 1) * 12
+        let end = start + 12
+        let pageGuides = guides.slice(start, end)
+
+        pageGuides.forEach(guide => {
+            const item = document.createElement('div')
+            item.className = 'guide-item'
+            item.innerHTML = `
+                <div class="guide-img">
+                    <img src="${guide.thumnail}" alt="Miniatura de la guía">
+                </div>
+                <div class="guide-info">
+                    <h3 class="guide-title">${guide.title}</h3>
+                    <p class="guide-content">${guide.content.substring(0, 120)}...</p>
+                </div>
+            `
+
+            guideList.appendChild(item)
+        })
+
+        // Actualizar paginación
+        const guidePageInfo = document.getElementById('guidePageInfo')
+        const prevBtn = document.getElementById('guidePrev')
+        const nextBtn = document.getElementById('guideNext')
+        const pagination = document.getElementById('guidePagination')
+
+        if (guidePageInfo && prevBtn && nextBtn && pagination) {
+            guidePageInfo.textContent = `Página ${guideCurrentPage} de ${guideTotalPages}`
+            prevBtn.disabled = guideCurrentPage === 1
+            nextBtn.disabled = guideCurrentPage === guideTotalPages
+            pagination.style.display = guideTotalPages > 1 ? 'flex' : 'none'
+        }
+    } catch (error) {
+        console.error('Error cargando datos del juego:', error)
+        showErrorState()
+    }
+}
+
+//Cambiar filtro
+document.getElementById('guideSort').addEventListener('change', () => {
+    loadGuides(this.value, 1)
+})
+
+// Eventos de paginación
+document.getElementById('guidePrev').addEventListener('click', () => {
+    if (guideCurrentPage > 1) {
+        loadGuides(guideLastFilter, guideCurrentPage - 1);
+    }
+})
+
+document.getElementById('guideNext').addEventListener('click', () => {
+    if (guideCurrentPage < guideTotalPages) {
+        loadGuides(guideLastFilter, guideCurrentPage + 1);
+    }
+})
+
+// ERROR DE CARGA
 const showErrorState = () => {
     const container = document.getElementById('game-info');
     container.innerHTML = `

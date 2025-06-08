@@ -650,6 +650,108 @@ body::before {
   line-height: 1.6;
 }
 
+/* Dropdown para filtro de guías */
+.tab-select {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #66d9ef;
+  color: #a6e3a1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.tab-select:focus {
+  border-color: #a6e3a1;
+  box-shadow: 0 0 8px #66d9ef55;
+  background: rgba(255,255,255,0.08);
+}
+
+.tab-select option {
+  background: #232b36;
+  color: #a6e3a1;
+}
+
+/* Guías */
+.guide-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(34, 40, 49, 0.85);
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+  transition: background 0.2s;
+  overflow-wrap: anywhere;
+}
+
+.guide-item:hover {
+  background: rgba(102, 217, 239, 0.08);
+}
+
+.guide-img {
+  min-width: 64px;
+  min-height: 64px;
+  margin-right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guide-img img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px #0003;
+  background: #232b36;
+}
+
+.guide-info {
+  flex: 1;
+}
+
+.guide-title {
+  color: #a6e3a1;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.guide-content {
+  color: #cdd6f4;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.guide-tab-btn {
+  background: none;
+  border: none;
+  color: #a6e3a1;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.guide-tab-btn.active, .guide-tab-btn:hover {
+  background: linear-gradient(45deg, #66d9ef, #a6e3a1);
+  color: #000;
+}
+
 /* Reseñas */
 .reviews-container {
   display: flex;
@@ -684,37 +786,6 @@ body::before {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   font-style: italic;
-}
-
-/* Guías */
-.guide-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.guide-item {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 10px;
-  padding: 1rem;
-  border-left: 3px solid #66d9ef;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.guide-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(5px);
-}
-
-.guide-item h4 {
-  color: #66d9ef;
-  margin-bottom: 0.5rem;
-}
-
-.guide-item p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
 }
 
 /* Recomendaciones */
