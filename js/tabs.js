@@ -1,3 +1,4 @@
+// CONTROL DE TABS
 const tabControl = () => {
     const tabBtns = document.querySelectorAll('.tab-btn')
     const tabContents = document.querySelectorAll('.tab-content')
@@ -14,21 +15,26 @@ const tabControl = () => {
             else if(btn.dataset.tab === 'guides') {
                 loadGuides()
             }
+            else if(btn.dataset.tab === 'reviews') {
+                loadReviews()
+            }
         })
     })
+}
+
+// VARIABLE OPTIONS
+const options = {
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
+        'x-rapidapi-host': 'games-details.p.rapidapi.com'
+    }
 }
 
 // NOTICIAS
 const loadNews = async () => {
     try {
         // const url = 'https://games-details.p.rapidapi.com/news/announcements/730?limit=10&offset=0';
-        // const options = {
-        //     method: 'GET',
-        //     headers: {
-        //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
-        //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-        //     }
-        // }
         // const response = await fetch(url, options)
 
         const response = await fetch('../db/news.json')
@@ -82,71 +88,35 @@ const loadGuides = async (filter = 'recent', page = 1) => {
 
         if(filter === 'recent') {
             // const url = 'https://games-details.p.rapidapi.com/guides/mostrecent/730?language=english&limit=30&offset=0'
-            // const options = {
-            //     method: 'GET',
-            //     headers: {
-            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
-            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-            //     }
-            // }
             // response = await fetch(url, options)
 
             response = await fetch('../db/guide_recent.json')
-
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`)
-            }
-
-            result = await response.json()
-            console.log(result)
         }
         else if(filter === 'top') {
             // const url = 'https://games-details.p.rapidapi.com/guides/toprated/730?language=english&limit=30&offset=0'
-            // const options = {
-            //     method: 'GET',
-            //     headers: {
-            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
-            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-            //     }
-            // }
             // response = await fetch(url, options)
             
             response = await fetch('../db/guide_top.json')
-
-            if(!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`)
-            }
-
-            result = await response.json()
-            console.log(result)
         }
         else if(filter === 'trending') {
             // const url = 'https://games-details.p.rapidapi.com/guides/trend/730?limit=30&offset=0&language=english'
-            // const options = {
-            //     method: 'GET',
-            //     headers: {
-            //         'x-rapidapi-key': 'c2e0927e61msh8f3f2f17e67df13p19e1e8jsn4615bf544d26',
-            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-            //     }
-            // }
             // response = await fetch(url, options)
             response = await fetch('../db/guide_trending.json')
-
-            if(!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`)
-            }
-
-            result = await response.json()
-            console.log(result)
         }
+
+        if(!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`)
+        }
+
+        result = await response.json()
+        console.log(result)
+        guides = result.data.guides || []
 
         const guideList = document.getElementById('guideList')
         guideList.innerHTML = ''
 
-        guides = result.data.guides || []
-
         if(guides.length === 0) {
-            guideList.innerHTML = '<div class="content-placeholder">No hay guías disponibles.</div>';
+            guideList.innerHTML = '<div class="content-placeholder">No hay guías disponibles.</div>'
             return;
         }
 
@@ -193,22 +163,112 @@ const loadGuides = async (filter = 'recent', page = 1) => {
 
 //Cambiar filtro
 document.getElementById('guideSort').addEventListener('change', () => {
-    const filter = document.getElementById('guideSort').value;
-    guideCurrentPage = 1; // Reiniciar a la primera página al cambiar el filtro
-    loadGuides(filter, guideCurrentPage);
+    const filter = document.getElementById('guideSort').value
+    guideCurrentPage = 1 // Reiniciar a la primera página al cambiar el filtro
+    loadGuides(filter, guideCurrentPage)
 })
 
 // Eventos de paginación
 document.getElementById('guidePrev').addEventListener('click', () => {
     if (guideCurrentPage > 1) {
-        loadGuides(guideLastFilter, guideCurrentPage - 1);
+        loadGuides(guideLastFilter, guideCurrentPage - 1)
     }
 })
 
 document.getElementById('guideNext').addEventListener('click', () => {
     if (guideCurrentPage < guideTotalPages) {
-        loadGuides(guideLastFilter, guideCurrentPage + 1);
+        loadGuides(guideLastFilter, guideCurrentPage + 1)
     }
+})
+
+// RESEÑAS
+const loadReviews = async (filter = "recent") => {
+    let response, result, reviews = []
+    try {
+        if(filter === 'recent') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/mostrecent/730?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_recent.json')
+        }
+        else if(filter === 'top') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/toprated/730?limit=30&offset=0'
+            // }
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_top.json')
+        }
+        else if(filter === 'day') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/trendday/730?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_day.json')
+        }
+        else if(filter === 'week') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/trendweek/730/?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_week.json')
+        }
+        else if(filter === 'month') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/trendmonth/730/?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_month.json')
+        }
+        else if(filter === 'year') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/trendyear/730/?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_year.json')
+        }
+        else if(filter === 'funny') {
+            // const url = 'https://games-details.p.rapidapi.com/reviews/funny/730/?limit=30&offset=0';
+            // response = await fetch(url, options)
+            response = await fetch('../db/reviews_funny.json')
+        }
+
+        if(!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`)
+        }
+
+        result = await response.json()
+        console.log(result)
+        if(filter === 'recent') {
+            reviews = result.data.reviews || []
+        } else reviews = result || []
+
+        const reviewsContainer = document.getElementById('reviewsContainer')
+        reviewsContainer.innerHTML = ''
+
+        if(reviews.length === 0) {
+            reviewsContainer.innerHTML = '<div class="content-placeholder">No hay reseñas disponibles.</div>'
+        }
+
+        reviews.forEach(review => {
+            const item = document.createElement('div')
+            item.className = 'review-item'
+            item.innerHTML = `
+                <div class="review-header">
+                    <div style="display:flex;align-items:center;gap:0.75rem;">
+                        <img src="${review.user_profile.split('🔍')[0]}" alt="Avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+                        <span style="color:#a6e3a1;font-weight:600;">${review.user_name}</span>
+                    </div>
+                    <span class="review-date">${review.date || ''}</span>
+                </div>
+                <div style="margin-bottom:0.5rem;">
+                    <span class="review-rating" style="color:${review.title === 'Recommended' ? '#a6e3a1' : '#f38ba8'};">
+                        ${review.title === 'Recommended' ? '👍 Recomendado' : '👎 No recomendado'}
+                    </span>
+                </div>
+                <p>${review.content || ''}</p>
+            `
+
+            reviewsContainer.appendChild(item)
+        })
+    } catch(error) {
+        console.error('Error cargando datos del juego:', error)
+        showErrorState()
+    }
+}
+
+document.getElementById('reviewSort').addEventListener('change', () => {
+    const filter = document.getElementById('reviewSort').value
+    loadReviews(filter)
 })
 
 // ERROR DE CARGA

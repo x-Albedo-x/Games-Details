@@ -764,6 +764,7 @@ body::before {
   border-radius: 10px;
   padding: 1.5rem;
   border-left: 3px solid #a6e3a1;
+  overflow-wrap: anywhere;
 }
 
 .review-header {

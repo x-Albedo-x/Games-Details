@@ -176,6 +176,18 @@
         <div class="tab-content" id="tab-reviews" style="display:none;">
             <div class="section m-2rem">
                 <h2>⭐ Reseñas</h2>
+                <div class="review" style="margin-bottom: 1rem;">
+                    <label for="reviewSort" style="margin-right: 0.5rem; color:#a6e3a1;">Ordenar por:</label>
+                    <select id="reviewSort" class="tab-select">
+                        <option value="recent">Más recientes</option>
+                        <option value="top">Mejor valoradas</option>
+                        <option value="day">Tendencias en el día</option>
+                        <option value="week">Tendencias en la semana</option>
+                        <option value="month">Tendencias en el mes</option>
+                        <option value="year">Tendencias en el año</option>
+                        <option value="funny">Graciosas</option>
+                    </select>
+                </div>
                 <div class="reviews-container" id="reviewsContainer">
                     <!-- Reseñas se llenarán dinámicamente -->
                 </div>
