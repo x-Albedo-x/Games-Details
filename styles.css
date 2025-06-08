@@ -431,7 +431,7 @@ body::before {
 /* Videos */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -765,6 +765,12 @@ body::before {
   padding: 1.5rem;
   border-left: 3px solid #a6e3a1;
   overflow-wrap: anywhere;
+  transition: all 0.3s ease;
+}
+
+.review-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
 }
 
 .review-header {

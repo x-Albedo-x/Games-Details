@@ -21,6 +21,9 @@ const tabControl = () => {
             else if(btn.dataset.tab === 'artwork') {
                 loadArtwork()
             }
+            else if(btn.dataset.tab === 'streams') {
+                loadStreams()
+            }
         })
     })
 }
@@ -162,7 +165,7 @@ const loadGuides = async (filter = 'recent', page = 1) => {
     }
 }
 
-//Cambiar filtro
+// Cambiar filtro
 document.getElementById('guideSort').addEventListener('change', () => {
     const filter = document.getElementById('guideSort').value
     guideCurrentPage = 1 // Reiniciar a la primera página al cambiar el filtro
@@ -298,7 +301,7 @@ const loadArtwork = async (page = 1) => {
         artworkGallery.innerHTML = ''
 
         if(art.length === 0) {
-            artworkGallery.innerHTML = '<div class="content-placeholder">No hay reseñas disponibles.</div>'
+            artworkGallery.innerHTML = '<div class="content-placeholder">No hay artworks disponibles.</div>'
         }
         console.log(art.length)
         console.log(Math.ceil(art.length / 24))
@@ -380,6 +383,50 @@ document.getElementById('artworkNext').addEventListener('click', () => {
         loadArtwork(artworkCurrentPage + 1)
     }
 })
+
+// BROADCASTS
+const loadStreams = async () => {
+    try {
+        let streams = []
+
+        // const url = 'https://games-details.p.rapidapi.com/media/broadcasts/730?limit=30&offset=0'
+        // const response = fetch(url, options)
+        const response = await fetch('../db/broadcasts.json') 
+        
+        if(!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`)
+        }
+
+        result = await response.json()
+        streams = result.data.broadcasts
+
+        const streamsContainer = document.getElementById('streamsContainer')
+        streamsContainer.innerHTML = ''
+
+        if(streams.length === 0) {
+            streamsContainer.innerHTML = '<div class="content-placeholder">No hay streams disponibles.</div>'
+        }
+
+        streams.forEach(stream => {
+            const item = document.createElement('div')
+            item.innerHTML = `
+                <iframe 
+                    src="${stream}" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    width="100%" 
+                    height="340"
+                    style="border-radius:12px; background:#181c23; margin-bottom:1.5rem;">
+                </iframe>
+            `
+
+            streamsContainer.appendChild(item)
+        })
+    } catch(error) {
+        console.log('Error cargando datos del juego: ', error)
+        showErrorState()
+    }
+}
 
 // ERROR DE CARGA
 const showErrorState = () => {
