@@ -32,6 +32,9 @@ const tabControl = () => {
 const params = new URLSearchParams(window.location.search)
 let gameID = params.get('id')
 
+// ANIMACIÓN DE CARGA
+const loader = document.getElementById('gameLoader')
+
 // VARIABLE OPTIONS
 const options = {
     method: 'GET',
@@ -43,15 +46,21 @@ const options = {
 
 // NOTICIAS
 const loadNews = async (type='all') => {
+    const tab = document.getElementById('tab-news')
+    let loaderTimeout = setTimeout(() => {
+        loader.style.display = 'block'
+        tab.style.display = 'none'
+    }, 400)
+
     try {
         let response
         if(type === 'all') {
             // const url = `https://games-details.p.rapidapi.com/news/all/${gameID}?limit=10&offset=0`
-            // const response = await fetch(url, options)
+            // response = await fetch(url, options)
             response = await fetch('../db/news_all.json')
         } else {
             // const url = `https://games-details.p.rapidapi.com/news/announcements/${gameID}?limit=10&offset=0`
-            // const response = await fetch(url, options)
+            // response = await fetch(url, options)
             response = await fetch('../db/news_official.json')
         }
         
@@ -87,6 +96,10 @@ const loadNews = async (type='all') => {
     } catch (error) {
         console.error('Error cargando datos del juego:', error)
         showErrorState()
+    } finally {
+        clearTimeout(loaderTimeout)
+        loader.style.display = 'none'
+        tab.style.display = 'block'
     }
 }
 
@@ -110,6 +123,12 @@ let guideCurrentPage = 1
 let guideTotalPages = 1
 
 const loadGuides = async (filter = 'recent', page = 1) => {
+    const tab = document.getElementById('tab-guides')
+    let loaderTimeout = setTimeout(() => {
+        loader.style.display = 'block'
+        tab.style.display = 'none'
+    }, 400)
+    
     guideLastFilter = filter
     guideCurrentPage = page
 
@@ -186,6 +205,10 @@ const loadGuides = async (filter = 'recent', page = 1) => {
     } catch (error) {
         console.error('Error cargando datos del juego:', error)
         showErrorState()
+    } finally {
+        clearTimeout(loaderTimeout)
+        loader.style.display = 'none'
+        tab.style.display = 'block'
     }
 }
 
@@ -211,6 +234,12 @@ document.getElementById('guideNext').addEventListener('click', () => {
 
 // RESEÑAS
 const loadReviews = async (filter = "recent") => {
+    const tab = document.getElementById('tab-reviews')
+    let loaderTimeout = setTimeout(() => {
+        loader.style.display = 'block'
+        tab.style.display = 'none'
+    }, 400)
+    
     try {
         let response, result, reviews = []
 
@@ -292,6 +321,10 @@ const loadReviews = async (filter = "recent") => {
     } catch(error) {
         console.error('Error cargando datos del juego:', error)
         showErrorState()
+    } finally {
+        clearTimeout(loaderTimeout)
+        loader.style.display = 'none'
+        tab.style.display = 'block'
     }
 }
 
@@ -305,6 +338,12 @@ let artworkCurrentPage = 1
 let artworkTotalPages = 1
 
 const loadArtwork = async (page = 1) => {
+    const tab = document.getElementById('tab-artwork')
+    let loaderTimeout = setTimeout(() => {
+        loader.style.display = 'block'
+        tab.style.display = 'none'
+    }, 400)
+    
     artworkCurrentPage = page
     
     try {
@@ -327,8 +366,7 @@ const loadArtwork = async (page = 1) => {
         if(art.length === 0) {
             artworkGallery.innerHTML = '<div class="content-placeholder">No hay artworks disponibles.</div>'
         }
-        console.log(art.length)
-        console.log(Math.ceil(art.length / 24))
+
         artworkTotalPages = Math.ceil(art.length / 24)
         artworkCurrentPage = Math.max(1, Math.min(page, artworkTotalPages))
         
@@ -362,6 +400,10 @@ const loadArtwork = async (page = 1) => {
     } catch(error) {
         console.log('Error cargando datos del juego: ', error)
         showErrorState()
+    } finally {
+        clearTimeout(loaderTimeout)
+        loader.style.display = 'none'
+        tab.style.display = 'block'
     }
 }
 
@@ -410,6 +452,12 @@ document.getElementById('artworkNext').addEventListener('click', () => {
 
 // BROADCASTS
 const loadStreams = async () => {
+    const tab = document.getElementById('tab-streams')
+    let loaderTimeout = setTimeout(() => {
+        loader.style.display = 'block'
+        tab.style.display = 'none'
+    }, 400)
+
     try {
         let streams = []
 
@@ -449,6 +497,10 @@ const loadStreams = async () => {
     } catch(error) {
         console.log('Error cargando datos del juego: ', error)
         showErrorState()
+    } finally {
+        clearTimeout(loaderTimeout)
+        loader.style.display = 'none'
+        tab.style.display = 'block'
     }
 }
 

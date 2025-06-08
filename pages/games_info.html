@@ -23,11 +23,6 @@
     </header>
 
     <div class="page active" id="game-info">
-        <div id="gameLoader" class="loading" style="display:none; text-align:center; padding:2rem;">
-            <div class="spinner" style="margin:0 auto;"></div>
-            <p style="margin-top:1rem; color:rgba(255,255,255,0.6);">Cargando...</p>
-        </div>
-
         <!-- Tab Bar -->
         <div class="tab-bar">
             <button class="tab-btn active" data-tab="general">🎮 Información general</button>
@@ -36,6 +31,11 @@
             <button class="tab-btn" data-tab="reviews">⭐ Reseñas</button>
             <button class="tab-btn" data-tab="artwork">🎨 Artwork</button>
             <button class="tab-btn" data-tab="streams">🔴 Transmisiones en vivo</button>
+        </div>
+
+        <div id="gameLoader" class="loading" style="display:none; text-align:center; padding:2rem;">
+            <div class="spinner" style="margin:0 auto;"></div>
+            <p style="margin-top:1rem; color:rgba(255,255,255,0.6);">Cargando...</p>
         </div>
 
         <!-- Información general -->
