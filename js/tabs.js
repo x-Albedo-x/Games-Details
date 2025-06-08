@@ -18,6 +18,9 @@ const tabControl = () => {
             else if(btn.dataset.tab === 'reviews') {
                 loadReviews()
             }
+            else if(btn.dataset.tab === 'artwork') {
+                loadArtwork()
+            }
         })
     })
 }
@@ -270,6 +273,75 @@ document.getElementById('reviewSort').addEventListener('change', () => {
     const filter = document.getElementById('reviewSort').value
     loadReviews(filter)
 })
+
+// ARTWORK
+const loadArtwork = async () => {
+    let result, art = []
+    try {
+        // const url = 'https://games-details.p.rapidapi.com/media/artworks/730?limit=30&offset=0'
+        // const response = fetch(url, options)
+        const response = await fetch('../db/artworks.json') 
+        
+        if(!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`)
+        }
+
+        result = await response.json()
+        art = result.data.artworks
+
+        const artworkGallery = document.getElementById('artworkGallery')
+        artworkGallery.innerHTML = ''
+
+        if(art.length === 0) {
+            artworkGallery.innerHTML = '<div class="content-placeholder">No hay reseñas disponibles.</div>'
+        }
+
+        art.forEach(art => {
+            const item = document.createElement('div')
+            item.innerHTML = `
+                <img class="artwork-img" src="${art}">
+            `
+
+            item.querySelector('.artwork-img').addEventListener('click', () => {
+                openArtworkModal(art)
+            })
+
+            artworkGallery.appendChild(item)
+        })
+    } catch(error) {
+        console.log('Error cargando datos del juego: ', error)
+        showErrorState()
+    }
+}
+
+const openArtworkModal = (imgUrl) => {
+    const overlay = document.createElement('div')
+    overlay.className = 'artwork-modal-overlay'
+    overlay.id = 'artwork-modal-overlay'
+    overlay.innerHTML = `
+        <button class="artwork-modal-close" title="Cerrar">&times;</button>
+        <img class="artwork-modal-img" src="${imgUrl}" alt="Artwork grande">
+    `
+    document.body.appendChild(overlay)
+
+    // Cerrar al hacer click en el botón o fuera de la imagen
+    overlay.querySelector('.artwork-modal-close').onclick = closeArtworkModal
+    overlay.onclick = function(e) {
+        if(e.target === overlay) closeArtworkModal()
+    }
+    // Cerrar con ESC
+    document.addEventListener('keydown', escCloseArtworkModal)
+}
+
+const closeArtworkModal = () => {
+    const overlay = document.getElementById('artwork-modal-overlay')
+    if(overlay) overlay.remove()
+    document.removeEventListener('keydown', escCloseArtworkModal)
+}
+
+const escCloseArtworkModal = (e) => {
+    if(e.key === 'Escape') closeArtworkModal()
+}
 
 // ERROR DE CARGA
 const showErrorState = () => {
