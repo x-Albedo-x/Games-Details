@@ -53,14 +53,14 @@
             // Mostrar estados de carga
             showLoadingState();
 
-            // const response = await fetch(`https://games-details.p.rapidapi.com/gameinfo/single_game/${gameID}`, {
-            //     method: 'GET',
-            //     headers: {
-            //         'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
-            //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-            //     }
-            // });
-            const response = await fetch('../db/game_info.json');
+            const response = await fetch(`https://games-details.p.rapidapi.com/gameinfo/single_game/${gameID}`, {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
+                    'x-rapidapi-host': 'games-details.p.rapidapi.com'
+                }
+            });
+            //const response = await fetch('../db/game_info.json');
 
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
@@ -287,7 +287,7 @@
 
     function loadScreenshots() {
         const screenshotsGallery = document.getElementById('screenshotsGallery');
-        const screenshots = safeArray(safeGet(gameData, 'images.screenshot'));
+        const screenshots = safeArray(safeGet(gameData, 'media.screenshot'));
 
         if (screenshots.length === 0) {
             showNoDataMessage(screenshotsGallery, 'No hay capturas de pantalla disponibles');
@@ -311,7 +311,7 @@
 
     function loadVideos() {
         const videosContainer = document.getElementById('videosContainer');
-        const videos = safeArray(safeGet(gameData, 'images.videos'));
+        const videos = safeArray(safeGet(gameData, 'media.videos'));
 
         if (videos.length === 0) {
             showNoDataMessage(videosContainer, 'No hay videos disponibles');

@@ -11,15 +11,15 @@
     async function search(searchInput) {
         try {
             if (searchInput) {
-                // const response = await fetch(`https://games-details.p.rapidapi.com/search?sugg=${searchInput}`, {
-                //     method: 'GET',
-                //     headers: {
-                //         'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
-                //         'x-rapidapi-host': 'games-details.p.rapidapi.com'
-                //     }
-                // }); 
+                const response = await fetch(`https://games-details.p.rapidapi.com/search?sugg=${searchInput}`, {
+                    method: 'GET',
+                    headers: {
+                        'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
+                        'x-rapidapi-host': 'games-details.p.rapidapi.com'
+                    }
+                }); 
 
-                const response = await fetch('../db/search.json');
+                // const response = await fetch('../db/search.json');
 
                 if (!response.ok) {
                     throw new Error('Error en la peticion');
