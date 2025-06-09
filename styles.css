@@ -1168,3 +1168,7 @@ html {
   justify-content: center;
   flex-direction: column;
 }
+
+#saveGame {
+  width: 100%;
+}
