@@ -1172,3 +1172,8 @@ html {
 #saveGame {
   width: 100%;
 }
+
+.similares-container{
+  display: flex;
+  flex-direction: column;
+}

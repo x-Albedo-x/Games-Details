@@ -1,15 +1,20 @@
-(()=>{
-    //VARIABLES
-    //verificar si habia una página previamente cargada, si no, iniciar en 1
-    let currentPage = parseInt(sessionStorage.getItem('currentCatalogPage')) || 1; 
-    let totalPages = 0; 
+(() => {
+    // VARIABLES
+    let currentPage = parseInt(sessionStorage.getItem('currentCatalogPage')) || 1;
+    let totalPages = 0;
     let gameCatalogData = [];
 
-    //BOTONES
-    const btnNext = document.getElementById('nextBtn-catalog')
-    const btnPrev = document.getElementById('prevBtn-catalog')
+    // BOTONES
+    const btnNext = document.getElementById('nextBtn-catalog');
+    const btnPrev = document.getElementById('prevBtn-catalog');
+    const btnRandomGame = document.getElementById('random-game');
 
-    //FUNCIONALIDAD DE BOTONES
+    // Función para generar número aleatorio
+    function numeroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // FUNCIONALIDAD DE BOTONES
     btnNext.addEventListener('click', () => {
         if (currentPage < totalPages) {
             currentPage += 1;
@@ -22,33 +27,30 @@
         if (currentPage > 1) {
             currentPage -= 1;
             sessionStorage.setItem('currentCatalogPage', currentPage);
-            loadGameList(currentPage); 
+            loadGameList(currentPage);
         }
     });
 
-    function updateButtonStates () {
+    // Actualizar visibilidad de botones
+    function updateButtonStates() {
         const contBtn = document.getElementById('btn-catalog');
-        //Hacer desaparecer si estamos en la primera página
         if (currentPage === 1) {
             btnPrev.style.display = 'none';
             contBtn.style.justifyContent = 'flex-end';
         } else {
-            btnPrev.style.display = 'inline-block'; 
+            btnPrev.style.display = 'inline-block';
             contBtn.style.justifyContent = 'space-between';
+        }
 
-        }   
-
-        //HAcer desaparecer si estamos en la ultima
         if (currentPage === totalPages) {
             btnNext.style.display = 'none';
             contBtn.style.justifyContent = 'flex-start';
         } else {
-            btnNext.style.display = 'inline-block'; 
+            btnNext.style.display = 'inline-block';
         }
-
     }
 
-    // FUNCIÓN SHOW LOADING STATE y ERROR STATE
+    // Estado de carga
     function showLoadingState(containerId) {
         const container = document.getElementById(containerId);
         if (container) {
@@ -61,7 +63,7 @@
         }
     }
 
-
+    // Estado de error
     function showErrorState() {
         const container = document.getElementById('catalog');
         container.innerHTML = `
@@ -79,83 +81,100 @@
         `;
     }
 
-    // CONEXIÓN A LA API
+    // FUNCIÓN PARA CARGAR LOS JUEGOS
     async function loadGameList(currentPage) {
-        try{
+        try {
             showLoadingState('catalog');
-            //Obtener datos de API
-            const response = await fetch(`https://games-details.p.rapidapi.com/page/${currentPage}`,{
+
+            const response = await fetch(`https://games-details.p.rapidapi.com/page/${currentPage}`, {
                 method: 'GET',
-	            headers: {
-		            'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
-		            'x-rapidapi-host': 'games-details.p.rapidapi.com'
+                headers: {
+                    'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
+                    'x-rapidapi-host': 'games-details.p.rapidapi.com'
                 }
             });
 
-            //Info de Archivo JSON
-            //const response = await fetch('../db/game_catalog_page1.json');
-
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
 
             const result = await response.json();
-            console.log('Datos recibidos:',result);
+            console.log('Datos recibidos:', result);
 
             gameCatalogData = result.data;
 
-            document.getElementById('catalog').innerHTML = ``;
-            
-            
-            processGameData();
-        }
-        catch(error){
-            console.error('Error cargando catalogo de juegos',error);
+            document.getElementById('catalog').innerHTML = '';
+            processGameData(); // Crear tarjetas
+        } catch (error) {
+            console.error('Error cargando catálogo de juegos', error);
             showErrorState();
         }
     }
 
+    // PROCESAR Y MOSTRAR TARJETAS DE JUEGOS
     function processGameData() {
-    //Limpiar HTML
-    const container = document.getElementById('catalog');
-    container.innerHTML = ''; 
+        const container = document.getElementById('catalog');
+        container.innerHTML = '';
 
-    //Guardar los juegos dentro de una variable, accediendo de los datos guardados a las páginas (por como está estructurado la API)
-    const games = gameCatalogData.pages; 
+        const games = gameCatalogData.pages;
 
-    games.forEach(game => {
-        const gameCard = document.createElement('div');
-        gameCard.className = 'game-card-catalog'; 
+        games.forEach(game => {
+            const gameCard = document.createElement('div');
+            gameCard.className = 'game-card-catalog';
 
-        //insertar tarjeta
-        gameCard.innerHTML = `
-            <img src="${game.img}" alt="${game.name}" class="game-image-catalog" onerror="this.src='../assets/no-image.png'">
-            <div class="game-info-catalog">
-                <h3 class="game-title-catalog">${game.name}</h3>
-                <p class="game-release-catalog"><b>Fecha de Lanzamiento: </b>${game.release_date}</p>
-                <p class="game-price-catalog"> <b>Precio: </b> ${game.price}</p>
-            </div>
+            gameCard.innerHTML = `
+                <img src="${game.img}" alt="${game.name}" class="game-image-catalog" onerror="this.src='../assets/no-image.png'">
+                <div class="game-info-catalog">
+                    <h3 class="game-title-catalog">${game.name}</h3>
+                    <p class="game-release-catalog"><b>Fecha de Lanzamiento: </b>${game.release_date}</p>
+                    <p class="game-price-catalog"><b>Precio: </b>${game.price}</p>
+                </div>
+            `;
+
+            gameCard.addEventListener('click', () => {
+                localStorage.setItem('game_data_' + game.id, JSON.stringify({
+                    image: game.img,
+                    price: game.price
+                }));
+                window.location.href = `pages/games_info.html?id=${encodeURIComponent(game.id)}`;
+            });
+
+            container.appendChild(gameCard);
+        });
+
+        totalPages = gameCatalogData.total_page;
+        updateButtonStates();
+        showrandomGame(); // Mostrar juego aleatorio cada vez que se carga una página
+    }
+
+    // JUEGO ALEATORIO
+    function showrandomGame() {
+
+        const games = gameCatalogData.pages;
+        if (!games || games.length === 0) return;
+
+        const juego = games[numeroAleatorio(0, games.length - 1)];
+        const contenedor = document.getElementById('game-placeholder');
+
+        // Guardar los datos necesarios para pasarlos a la página de game-info
+        localStorage.setItem('game_data_' + juego.id, JSON.stringify({
+            image: juego.img,
+            price: juego.price
+        }));
+
+        //poner imagen y titulo del juego
+        contenedor.innerHTML = `
+            <a class="random-game-card" href="pages/games_info.html?id=${encodeURIComponent(juego.id)}">
+                <img src="${juego.img}" alt="${juego.name}" onerror="this.src='../assets/no-image.png'">
+                <h3>${juego.name}</h3>
+            </a>
         `;
-
-        gameCard.addEventListener('click', () => {
-            localStorage.setItem('game_data_' + game.id, JSON.stringify({
-                image: game.img,
-                price: game.price
-            }));
-        window.location.href = `pages/games_info.html?id=${encodeURIComponent(game.id)}`;
-});
-
-
-        container.appendChild(gameCard);
-    });
-
-
-
-    // Actualizar número total de páginas desde la respuesta
-    totalPages = gameCatalogData.total_page;
-    updateButtonStates(); // Refrescar estado de botones
 }
 
 
-loadGameList(currentPage);
+
+    btnRandomGame.addEventListener('click', showrandomGame);
+
+    // Cargar primera página
+    loadGameList(currentPage);
 })();

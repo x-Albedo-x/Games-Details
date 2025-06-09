@@ -3,7 +3,9 @@
 .catalog{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 30px;
+    padding: 2rem;
 }
 .game-card-catalog {
   background: rgba(255, 255, 255, 0.05);
@@ -15,8 +17,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 25vw;
-  margin: 15px;
+  width: calc(33.333% - 30px);
+  box-sizing: border-box;
 }
 
 .game-card-catalog:hover {
@@ -87,3 +89,57 @@
     justify-content: space-between;
 }
 
+/* MEDIA QUERIES PARA HACERLO RESPONSIVO*/
+@media (max-width: 1024px) {
+    /*solo dos juegos por fila*/
+  .game-card-catalog {
+    width: calc(50% - 30px); 
+  }
+}
+
+@media (max-width: 640px) {
+    /* solo un juego por fila */
+  .game-card-catalog {
+    width: 100%; 
+  }
+}
+
+/*NUEVAS EXPERIENCIAS*/
+
+.btn-random {
+  display: inline-block;
+  background: linear-gradient(45deg, #66d9ef, #a6e3a1);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  margin: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: transparent;
+}
+
+.btn-random:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 217, 239, 0.3);
+  cursor: pointer;
+}
+
+.random-game-card{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit; 
+
+}
+
+.random-game-card img{
+  width: 100%; 
+  border-radius: 10px; 
+  max-height: 250px; 
+  object-fit: cover;
+}
+
+.random-game-card h3{
+  color: #66d9ef; 
+  margin-top: 1rem;
+}
