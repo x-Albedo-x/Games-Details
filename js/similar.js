@@ -87,8 +87,15 @@
                     // Agregar eventos a cada targeta para redirigir a sus detalles
                     const gameCards = document.querySelectorAll('.game-card');
                     gameCards.forEach(card => {
-                        const gameID = card.getAttribute('data-id');
+                        const gameID = card.getAttribute('data-id')
+                        const image = card.querySelector('img').src
+                        const price = card.querySelector('.game-info p').textContent.replace('Precio: ', '')
+
                         card.addEventListener('click', () => {
+                            localStorage.setItem('game_data_' + gameID, JSON.stringify({
+                                image,
+                                price
+                            }))
                             window.location.href = `/pages/games_info.html?id=${encodeURIComponent(gameID)}`;
                         });
                     })

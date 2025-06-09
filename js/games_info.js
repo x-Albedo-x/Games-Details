@@ -4,6 +4,15 @@
     const gameID = params.get('id');
     let gameData = null;
 
+    // RECUPERAR IMAGEN Y PRECIO
+    let extraData = {}
+    try {
+        const stored = localStorage.getItem('game_data_' + gameID)
+        extraData = JSON.parse(stored)
+    } catch(error) {
+        extraData = {}
+    }
+
     // UTILITY FUNCTIONS
     function safeGet(obj, path, defaultValue = '') {
         return path.split('.').reduce((current, key) => {
@@ -125,22 +134,10 @@
 
     function loadMainImage() {
         const mainImage = document.getElementById('gameMainImage');
-        const screenshots = safeArray(safeGet(gameData, 'images.screenshot'));
 
-        if (screenshots.length > 0 && screenshots[0]) {
-            mainImage.src = screenshots[0];
-            mainImage.alt = safeString(gameData?.name, 'Screenshot del juego');
-            mainImage.onerror = () => {
-                mainImage.style.display = 'none';
-                mainImage.parentElement.innerHTML = `
-                    <div class="game-placeholder" style="display: flex; align-items: center; justify-content: center; min-height: 200px;">
-                        <div style="text-align: center; color: rgba(255,255,255,0.6);">
-                            <span style="font-size: 4rem;">🎮</span>
-                            <p>Sin imagen disponible</p>
-                        </div>
-                    </div>
-                `;
-            };
+        if (extraData.image) {
+            mainImage.src = extraData.image;
+            mainImage.alt = safeString(gameData?.name, 'Imagen del juego');
         } else {
             mainImage.style.display = 'none';
             mainImage.parentElement.innerHTML = `
@@ -202,24 +199,10 @@
 
     function loadPricing() {
         const pricingContainer = document.getElementById('pricingContainer');
-        const pricing = safeArray(gameData?.pricing);
 
-        if (pricing.length === 0) {
-            showNoDataMessage(pricingContainer, 'Información de precios no disponible');
-            return;
-        }
-
-        pricing.forEach(priceOption => {
-            if (priceOption && (priceOption.name || priceOption.price)) {
-                const priceElement = document.createElement('div');
-                priceElement.className = 'detail-item';
-                priceElement.innerHTML = `
-                    <span><strong>${safeString(priceOption.name, 'Opción')}:</strong></span>
-                    <span style="color: #a6e3a1; font-weight: bold;">${safeString(priceOption.price, 'No especificado')}</span>
-                `;
-                pricingContainer.appendChild(priceElement);
-            }
-        });
+        if(extraData.price) {
+            pricingContainer.innerHTML = `<div class="detail-item"><span style="color: #a6e3a1; font-weight: bold;">${extraData.price} USD</span></div>`;
+        } else showNoDataMessage(pricingContainer, 'Información de precios no disponible');
     }
 
     function loadExternalLinks() {
