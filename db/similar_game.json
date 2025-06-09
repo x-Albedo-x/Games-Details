@@ -1,0 +1,117 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "similar_games": [
+      {
+        "id": "1888930",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1888930/header_292x136.jpg?t=1746041320",
+        "price": "$59.99",
+        "name": "The Last of Us Part I"
+      },
+      {
+        "id": "1259420",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1259420/header_292x136.jpg?t=1746207981",
+        "price": "$39.99",
+        "name": "Days Gone"
+      },
+      {
+        "id": "1196590",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1196590/header_292x136.jpg?t=1741142800",
+        "price": "comming soon",
+        "name": "Resident Evil Village"
+      },
+      {
+        "id": "883710",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/header_292x136.jpg?t=1728438541",
+        "price": "comming soon",
+        "name": "Resident Evil 2"
+      },
+      {
+        "id": "2531310",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2531310/header_292x136.jpg?t=1746152571",
+        "price": "$49.99",
+        "name": "The Last of Us Part II Remastered"
+      },
+      {
+        "id": "418370",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/418370/header_292x136.jpg?t=1728436752",
+        "price": "comming soon",
+        "name": "Resident Evil 7 Biohazard"
+      },
+      {
+        "id": "1693980",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1693980/header_292x136.jpg?t=1749125590",
+        "price": "$59.99",
+        "name": "Dead Space"
+      },
+      {
+        "id": "952060",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/header_292x136.jpg?t=1728438347",
+        "price": "comming soon",
+        "name": "Resident Evil 3"
+      },
+      {
+        "id": "601430",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601430/header_292x136.jpg?t=1740668528",
+        "price": "$39.99",
+        "name": "The Evil Within 2"
+      },
+      {
+        "id": "268050",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268050/header_292x136.jpg?t=1726757591",
+        "price": "$19.99",
+        "name": "The Evil Within"
+      },
+      {
+        "id": "2124490",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2124490/header_292x136.jpg?t=1744248682",
+        "price": "$69.99",
+        "name": "SILENT HILL 2"
+      },
+      {
+        "id": "339340",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/339340/header_292x136.jpg?t=1742177237",
+        "price": "comming soon",
+        "name": "Resident Evil 0"
+      },
+      {
+        "id": "699130",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/699130/header_292x136.jpg?t=1733932481",
+        "price": "$29.99",
+        "name": "World War Z"
+      },
+      {
+        "id": "239140",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/header_292x136.jpg?t=1738004178",
+        "price": "comming soon",
+        "name": "Dying Light"
+      },
+      {
+        "id": "21690",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/21690/header_292x136.jpg?t=1712193350",
+        "price": "comming soon",
+        "name": "Resident Evil 5"
+      },
+      {
+        "id": "304240",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/304240/header_292x136.jpg?t=1709710949",
+        "price": "comming soon",
+        "name": "Resident Evil"
+      },
+      {
+        "id": "3176060",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3176060/24364d74d56334dcb9b93031603a4ba107ecf0d7/header_292x136.jpg?t=1748985255",
+        "price": "$8.99",
+        "name": "Emissary Zero"
+      },
+      {
+        "id": "550",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/550/header_292x136.jpg?t=1745368562",
+        "price": "$9.99",
+        "name": "Left 4 Dead 2"
+      }
+    ],
+    "total": 18
+  }
+}
