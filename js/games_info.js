@@ -130,6 +130,9 @@
 
         // Requisitos del sistema
         loadSystemRequirements();
+
+        // Juegos similares
+        loadSimilarGames();
     }
 
     function loadMainImage() {
@@ -366,6 +369,58 @@
         platforms.forEach(platform => {
             sysReqContainer.appendChild(platform);
         });
+    }
+
+    async function loadSimilarGames() {
+        try {
+            const url = `https://games-details.p.rapidapi.com/similargame/${gameID}`;
+            const response = await fetch(url, options)
+            // const response = await fetch('../db/similar_game.json');
+            
+            if (!response.ok) throw new Error('No se pudieron cargar los juegos similares');
+            
+            const result = await response.json();
+            const games = result.data.similar_games || [];
+
+            const grid = document.getElementById('similarGamesGrid');
+            grid.innerHTML = '';
+
+            if (games.length === 0) {
+                grid.innerHTML = '<div class="content-placeholder">No hay juegos similares disponibles.</div>';
+                return;
+            }
+
+            const gamesSliced = games.slice(0, 6)
+
+            gamesSliced.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.setAttribute('data-id', game.id);
+
+                card.innerHTML = `
+                    <div class="game-image">
+                        <img src="${game.image}" alt="${game.name}" />
+                    </div>
+                    <div class="game-info">
+                        <h3>${game.name || 'Sin título'}</h3>
+                        <p>Precio: ${game.price || 'Sin precio'}</p>
+                    </div>
+                `;
+
+                // Al hacer click, también guardar datos extra y redirigir
+                card.addEventListener('click', () => {
+                    localStorage.setItem('game_data_' + game.id, JSON.stringify({
+                        image: game.image,
+                        price: game.price
+                    }));
+                    window.location.href = `games_info.html?id=${encodeURIComponent(game.id)}`;
+                });
+
+                grid.appendChild(card);
+            });
+        } catch (error) {
+            grid.innerHTML = '<div class="content-placeholder">No se pudieron cargar los juegos similares.</div>';
+        }
     }
 
     function createRequirementSection(title, minReqs, recommReqs) {
