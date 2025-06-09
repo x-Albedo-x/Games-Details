@@ -1176,4 +1176,13 @@ html {
 .similares-container{
   display: flex;
   flex-direction: column;
+
+}
+#featured-news > b {
+  color: lightgray;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  text-align: center;
 }
