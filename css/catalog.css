@@ -61,6 +61,11 @@
   font-size: 1.1rem;
 }
 
+.game-release-catalog b, .game-price-catalog b{
+    color: #a6e3a1;
+
+}
+
 
 /*BOTONES*/
 
@@ -81,3 +86,4 @@
     display: flex;
     justify-content: space-between;
 }
+

@@ -1,10 +1,9 @@
 (()=>{
     //VARIABLES
-    let currentPage = 1; //página por defecto
+    //verificar si habia una página previamente cargada, si no, iniciar en 1
+    let currentPage = parseInt(sessionStorage.getItem('currentCatalogPage')) || 1; 
     let totalPages = 0; 
     let gameCatalogData = [];
-
-
 
     //BOTONES
     const btnNext = document.getElementById('nextBtn-catalog')
@@ -14,6 +13,7 @@
     btnNext.addEventListener('click', () => {
         if (currentPage < totalPages) {
             currentPage += 1;
+            sessionStorage.setItem('currentCatalogPage', currentPage);
             loadGameList(currentPage);
         }
     });
@@ -21,22 +21,29 @@
     btnPrev.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage -= 1;
+            sessionStorage.setItem('currentCatalogPage', currentPage);
             loadGameList(currentPage); 
         }
     });
 
-
     function updateButtonStates () {
+        const contBtn = document.getElementById('btn-catalog');
+        //Hacer desaparecer si estamos en la primera página
         if (currentPage === 1) {
-            btnPrev.disabled = true;
+            btnPrev.style.display = 'none';
+            contBtn.style.justifyContent = 'flex-end';
         } else {
-            btnPrev.disabled = false;
-        }
+            btnPrev.style.display = 'inline-block'; 
+            contBtn.style.justifyContent = 'space-between';
 
+        }   
+
+        //HAcer desaparecer si estamos en la ultima
         if (currentPage === totalPages) {
-            btnNext.disabled = true;
+            btnNext.style.display = 'none';
+            contBtn.style.justifyContent = 'flex-start';
         } else {
-            btnNext.disabled = false;
+            btnNext.style.display = 'inline-block'; 
         }
 
     }
@@ -53,6 +60,7 @@
             `;
         }
     }
+
 
     function showErrorState() {
         const container = document.getElementById('catalog');
@@ -76,16 +84,16 @@
         try{
             showLoadingState('catalog');
             //Obtener datos de API
-            //const response = await fetch(`https://games-details.p.rapidapi.com/page/${currentPage}`,{
-            //    method: 'GET',
-	        //    headers: {
-		     //       'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
-		    //        'x-rapidapi-host': 'games-details.p.rapidapi.com'
-            //    }
-            //});
+            const response = await fetch(`https://games-details.p.rapidapi.com/page/${currentPage}`,{
+                method: 'GET',
+	            headers: {
+		            'x-rapidapi-key': '1e5a12f004msh46229e7c88c4743p144147jsnb1b34afac718',
+		            'x-rapidapi-host': 'games-details.p.rapidapi.com'
+                }
+            });
 
             //Info de Archivo JSON
-            const response = await fetch('../db/game_catalog_page1.json');
+            //const response = await fetch('../db/game_catalog_page1.json');
 
             if(!response.ok){
                 throw new Error(`Error HTTP: ${response.status}`);
@@ -124,13 +132,24 @@
             <img src="${game.img}" alt="${game.name}" class="game-image-catalog" onerror="this.src='../assets/no-image.png'">
             <div class="game-info-catalog">
                 <h3 class="game-title-catalog">${game.name}</h3>
-                <p class="game-release-catalog">${game.release_date}</p>
-                <p class="game-price-catalog">${game.price}</p>
+                <p class="game-release-catalog"><b>Fecha de Lanzamiento: </b>${game.release_date}</p>
+                <p class="game-price-catalog"> <b>Precio: </b> ${game.price}</p>
             </div>
         `;
 
+        gameCard.addEventListener('click', () => {
+            localStorage.setItem('game_data_' + game.id, JSON.stringify({
+                image: game.img,
+                price: game.price
+            }));
+        window.location.href = `pages/games_info.html?id=${encodeURIComponent(game.id)}`;
+});
+
+
         container.appendChild(gameCard);
     });
+
+
 
     // Actualizar número total de páginas desde la respuesta
     totalPages = gameCatalogData.total_page;
