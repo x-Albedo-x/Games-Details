@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "broadcasts": [
+      "https://steamcommunity.com/broadcast/watch/76561198089797549",
+      "https://steamcommunity.com/broadcast/watch/76561198420251409",
+      "https://steamcommunity.com/broadcast/watch/76561199043114308",
+      "https://steamcommunity.com/broadcast/watch/76561199550535593",
+      "https://steamcommunity.com/broadcast/watch/76561199816151248",
+      "https://steamcommunity.com/broadcast/watch/76561198040382556",
+      "https://steamcommunity.com/broadcast/watch/76561199059845958",
+      "https://steamcommunity.com/broadcast/watch/76561199476326539",
+      "https://steamcommunity.com/broadcast/watch/76561199457936193",
+      "https://steamcommunity.com/broadcast/watch/76561198905670430",
+      "https://steamcommunity.com/broadcast/watch/76561198089797549",
+      "https://steamcommunity.com/broadcast/watch/76561198420251409"
+    ],
+    "limit": "18",
+    "offset": "0"
+  }
+}

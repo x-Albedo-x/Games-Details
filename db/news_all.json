@@ -1,0 +1,70 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "news": [
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Mar 31",
+        "content": " Added three all-new weapon collections to the Weekly Care Package drop list: Ascent, Boreal, and Radiant Removed four weapon collections from the Weekly Care Package drop list: Bank, Italy, Lake, and the original Train collection Added new Armory Content: The Train 2025 Collection The Fever Case A new Limited Edition Item: the XM1014 | Solitude Adjusted Banana to more closely match the size of the CS:GO version Simplified background behind T ramp Simplified view into Pit Simplified background of Bombsite B Removed step on sides of Arch hallway Removed pixel gap at Coffin Adjusted crates on steps up to balcony so players step up reliably Adjusted or removed props throughout map Adjusted Player and Grenade collision throughout map Fixed a bug where player shadows would render through windows above A main Fixed some holes in the world Simplified back wall by door to Z Simplified background by upper B entrance Shortened overhead roof rail in A site, to make it easier to throw utility into site Replaced see-through grating on catwalk outside of Z door Replaced see-through fences at top if Ivy with solid version Simplified brick wall by Ivy Fixed grenade collision on upper B arch",
+        "like": "5,896"
+      },
+      {
+        "news_title": "Spring Forward",
+        "date": "Mar 31",
+        "content": "New weekly care package drop collections, Spring cleaning on Inferno and Train, and an update to content in the Armory—today's update contains a little something for everyone!Your weekly care packages just got a bit more interesting. Three new weapon collections have been added to the care package drop list, so keep an eye out for items from the all-new Ascent, Boreal, and Radiant collections. With over 70 new finishes, these collections feature a wide range of styles from solid colors, gold reliefs, camo patterns, custom paint jobs and more.We're also tidying up a few maps. Inferno and Train have undergone some Spring cleaning. You'll notice cleaner surfaces, less clutter, and a slightly wider banana.The Armory has received some new offerings, beginning with the all-new Fever Case, featuring 17 weapon finishes from community contributors and Shattered Web knives in Chroma finishes:[carousel][/carousel]And with Train releasing earlier this year, its collection gets a revamp featuring designs inspired by the map's graffiti, location, and more:  [carousel][/carousel]And one more thing, we have added a new Limited Edition Item: the XM1014 | Solitude. Its mountainous pattern comes in a wide range of variations:What are you waiting for? Jump into a match and check out what's new!",
+        "like": "16,386"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Mar 20",
+        "content": "Updated Basalt to the latest version from Steam Workshop (Update Notes)Added ability to author and submit patterns for the Missing Link Charm to Counter-Strike 2 Steam Workshop.",
+        "like": "30,788"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Feb 27",
+        "content": "InfernoFixed roof geometry at church that was visible from boiler entrance.Fixed roof geometry at church that was visible from boiler entrance.Fixed a case where voice chat would break after unloading a Steam Workshop map.Fixed a case where game client would crash if certain community server plugins were restricting networking of player entities.Fixed several bugs in applying patches UI.",
+        "like": "64,597"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Feb 13",
+        "content": "Fixed sizing and scaling of UI elements shared between buy menu and in-game HUD.Fixed a bug with armor display for CSTV spectators.Updated alternate AK-47 inspect animation.Increased supported upload size for Counter-Strike 2 Steam Workshop Maps to 3 GB.",
+        "like": "53,564"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Feb 6",
+        "content": "Adjusted the logic that determines when players are too far apart in CS Rating to participate in matchmaking together as a party. In most cases, players who used to play together as a party in Premier Season One will be able to party together in Premier Season Two.Added \"Get Service Medal\" UI element directly to the main menu profile card.Fixed a case where main menu profiles were missing display medals.Updated Dust II radar image to be more accurate.Fixed a case where inspect or reload button presses could cause prediction errors.",
+        "like": "38,381"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Feb 3",
+        "content": "Fixed AUG scope stencil filter bug near water surfaces.Fixed Premier progress bar not displaying properly in low resolutions.Fixed certain UI panels not rendering transparently when using CMAA2 and HDR performance settings simultaneously.Improved dynamic radar scale to snap size when a newly discovered enemy/C4 enters radar view, but still shrink gradually when enemy/C4 disappears and enough time passes.Fixed radar scale settings UI to support full range of radar scale from 0.25 to 1.0 values.Fixed sounds from Train inspect scenery not getting cleared when going back to the main menu.Fixed misprediction error smoothing near walls to avoid clipping through walls.Fixed cloth simulation bug on loopback=1 local servers.",
+        "like": "27,897"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Jan 29",
+        "content": "Basalt - updated to the latest version from the Community Workshop (Update Notes).Activated Premier Season Two progress indicator in the play menu.Fixed regressions with AUG/SG scope graphics.",
+        "like": "30,594"
+      },
+      {
+        "news_title": "Season's Greetings",
+        "date": "Jan 28",
+        "content": "Welcome to Premier Season Two. If you haven't heard the news, here's what's new in Season Two. Vertigo is out, Train is in, the M4A4 is more... A4-dable... and we've tweaked the FAMAS. Season Two runs from now through the Austin Major, at which point players who meet the requirements will be awarded a Premier Season Two Medal. The color will correspond to your highest CS Rating achieved during the season, and the bars will reflect your total wins, with one bar for every 25—up to five bars.To earn your Premier Season Two Medal, you'll need an account in good standing, 25 Premier match wins, and an active CSR at the end of the season.Premier matchmaking is now open for business, so hit the queue and start racking up those wins!",
+        "like": "40,752"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "Jan 28",
+        "content": "Premier Season Two is here, and Premier matchmaking has resumedEvery player who earned a CS Rating during Season One will receive a commemorative Premier Season One Medal which includes detailed Season StatisticsEvery player will have their CS Rating recalibrated based on their Season One performance, and will need to re-establish their CS Rating by winning 10 matchesTrain has been added to the Active Duty map poolVertigo has been removed from the Active Duty map poolM4A4 price reduced to $2,900FAMAS accuracy improved and price reduced to $1,950Reduced crouching accuracy for the MP9, MP5-SD, and MP7Adjusted scope dot on AUG/SG to be more useable at rangeAdded a new radar dynamic zoom option that will grow or shrink the radar to include your team mates, bomb and other detected elementsAdjusted grenade order in spectator UI to match weapon selection orderIncreased brightness of carried C4 in UIRemoved a boost angle from Long Dog to Bombsite AFixed lighting artifacts on double-sided materialsAdded fallback logic to allow playing incomplete demo files, either copied from an ongoing live match or recovered after a game server crashFixed an exploit where users could use secondary fire on R8 Revolver and then sell it backCounter-strafe summaries are now available in game server log data distributed via log address in addition to console logs",
+        "like": "13,997"
+      }
+    ],
+    "limit": 10,
+    "offset": 0
+  }
+}
