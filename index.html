@@ -7,7 +7,11 @@
   <title>Steam Game Explorer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./js/connection.js" type="module"></script>
+  <link rel="stylesheet" href="./css/catalog.css">
+  <script src="./js/indexConn.js" type="module"></script>
   <script src="./js/index.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,9 +20,8 @@
     <div class="header-content">
       <h1>Steam Game Explorer</h1>
       <nav class="nav-menu">
-        <a href="./index.html" class="nav-btn active">🏠 Inicio</a>
-        <a href="./pages/media.html" class="nav-btn">📸 Media</a>
-        <a href="./pages/community.html" class="nav-btn">👥 Comunidad</a>
+        <a href="#" class="nav-btn active">🏠 Inicio</a>
+        <a id="register" href="./pages/profile.html" class="nav-btn">👤 Ingresar</a>
       </nav>
     </div>
   </header>
@@ -35,25 +38,63 @@
     <div class="container">
       <div class="welcome-section">
         <div class="section featured-game">
-          <h2>🌟 Juego Destacado</h2>
+          <h2>🌟 ¡Conoce nuevas Experiencias! </h2>
           <div class="featured-content">
             <div class="featured-image">
-              <div class="game-placeholder">
-                <span class="game-icon">🎮</span>
+              <div class="game-placeholder" id="game-placeholder">
+                <!--
+                <span class="game-icon" >🎮</span>
+                AQUI OBTENEMOS JUEGO
+                -->
               </div>
             </div>
             <div class="featured-info">
               <h3>Selecciona un juego para comenzar</h3>
-              <p>Usa la barra de búsqueda para encontrar información detallada sobre cualquier juego de Steam.</p>
+              <p>Usa la barra de búsqueda para encontrar información detallada sobre cualquier juego de Steam, explora por nuestro cátalogo o descubre nuevos juegos.</p>
               <div class="featured-tags">
-                <span class="tag">🔥 Popular</span>
-                <span class="tag">⭐ Mejor Valorado</span>
-                <span class="tag">🆕 Nuevo</span>
+                <button class="btn-random" id="random-game">👀 Nueva Sugerencia</button>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Noticias Personalizadas -->
+        <div class="section">
+          <h2>📰 Ultimas Noticias</h2>
+          <div id="featured-news"></div>
+        </div>
+
+        <!-- Catalogo -->
+        <div class="section">
+          <h2>🎮 Catalogo de Juegos</h2>
+
+          
+          <div class="catalog" id="catalog">
+            <!--Elementos individuales insertados desde JS-->
+
+
+          
+          </div>
+
+          <div class="btn-catalog" id="btn-catalog">
+            <button id="prevBtn-catalog"><i class="fa-solid fa-arrow-left"></i></button>
+            <button id="nextBtn-catalog"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+      <!--
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-icon">📊</div>
@@ -77,6 +118,7 @@
             </div>
           </div>
         </div>
+      -->
       </div>
     </div>
   </div>
@@ -302,25 +344,7 @@
         </div>
       </div>
 
-      <div class="section">
-        <h2>🏆 Recomendaciones Personalizadas</h2>
-        <div class="recommendations">
-          <div class="recommendation-item">
-            <span class="rec-icon">🎯</span>
-            <div class="rec-content">
-              <h4>Basado en tus preferencias</h4>
-              <p>Juegos que podrían gustarte según tu historial</p>
-            </div>
-          </div>
-          <div class="recommendation-item">
-            <span class="rec-icon">🔥</span>
-            <div class="rec-content">
-              <h4>Tendencias actuales</h4>
-              <p>Los juegos más populares en este momento</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- AQUI ESTABA ANTES APARTADO DE SIMILARES QUE QUITAMOS-->
     </div>
   </div>
 
@@ -395,6 +419,9 @@
       observer.observe(element);
     });
   </script> -->
+
+    <script src="./js/catalog.js"></script>
+
 </body>
 
 </html>

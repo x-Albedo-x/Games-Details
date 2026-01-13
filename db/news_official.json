@@ -1,0 +1,70 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "news": [
+      {
+        "news_title": "Capture the Moment",
+        "date": "May 29",
+        "content": "The BLAST.tv Austin Major is fast approaching! Activate your Austin 2025 Viewer Pass and set your Pick'Ems before the first matches start, and you'll be well on your way to upgrading your Challenge Coin and earning Souvenir Tokens. Speaking of which...Just like previous Majors, you'll have the opportunity to claim a memento from the match of your choice. But this time, if you choose a , you'll receive an  Souvenir Highlight Package.Available exclusively for playoff stage matches, Souvenir Highlight Packages contain a souvenir weapon with an attached charm that features a video highlight from the playoff map you selected. Your weapon's description will include information about the highlight, and you can view the attached clip in your CS2 inventory, in Steam, or while spectating a teammate in-match.We're excited for everyone to get their chance to pick up a playoffs-exclusive Souvenir Highlight Package, but they will take some time to put together. So stay tuned—Souvenir Highlight Packages will be redeemable shortly after the Major comes to a close!",
+        "like": "30,221"
+      },
+      {
+        "news_title": "BLAST.TV Austin Major 2025",
+        "date": "May 22",
+        "content": "Like a dust storm on the horizon, the BLAST.TV Austin Major is fast approaching. Join us June 3rd as the first stage of the major gets underway!Featuring more teams than ever before, this Major promises to be the most competitive yet. And you can start supporting your favorite teams today with the Austin 2025 Viewer Pass!Your activated Austin 2025 Viewer Pass includes a coin that you can upgrade by playing the Pick'Em challenge, along with unlimited team graffiti for the duration of the event so you can show your support everywhere you play. You'll also have the opportunity to earn (and purchase) Souvenir Tokens, redeemable for a memento from the match of your choice. Along with the Viewer Pass and Pick'Em Challenge, today we're releasing tournament stickers featuring the logos of every participating team and the autograph of every participating player. With a bit of Texas flair, Austin Major stickers can be found in a variety of finishes so you can find the perfect look for your collection. So mark your calendar, dust off your boots, and join us in Austin for Counter-Strike's biggest Major yet!But that's not all!We've partnered with Games Workshop to celebrate the Warhammer Skulls 2025 event by releasing four Warhammer 40,000-themed sticker capsules.Themed after Warhammer 40,000 decal sheets, you'll find the Warhammer 40,000 Adeptus Astartes, Traitor Astartes, Imperium, and Xenos Sticker Capsules in-game now!",
+        "like": "32,782"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 21",
+        "content": " Rendered viewangle adjustments due to recoil are now calculated per frame.",
+        "like": "14,384"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 19",
+        "content": " Updated to the latest version from the Community Workshop (Update Notes).",
+        "like": "12,088"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 15",
+        "content": " Deathmatch mode now allows unbalanced teams. Fixed a case where molotov and incendiary fire was visible through the AK-47 viewmodel. Fixed a case where stickers covering the gap on the front grip of the AK-47 weren't lit correctly in left hand mode. Fixed a case where inventory item icons rendered incorrectly while scoped in-game. Shortened front end of the AK-47 fire sound. Reduced delay for body shot impact sounds from the attacker perspective. Body shot impact sounds from the attacker perspective will momentarily reduce the volume of weapon fire and ambience to help ensure feedback remains audible.",
+        "like": "18,950"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 13",
+        "content": " Fixed a bug where weapons purchased with \"Buy & Throw\" could be refunded after firing. Season Two world and regional leaderboards are now populated. Added HUD \"Glow Weapon with Rarity Color\" setting. Minimally scraped stickers now cover over the gap on the front grip of the AK-47.",
+        "like": "15,789"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 12",
+        "content": " Fixed a bug where searching for Defusal Group Alpha would lead to Anubis and Defusal Group Delta would lead to Vertigo. Updated to the latest version from the Community Workshop (Update Notes). Updated to the latest version from the Community Workshop (Update Notes). Updated to the latest version from the Community Workshop (Update Notes). Updated to the latest version from the Community Workshop (Update Notes). Remastered various UI sounds. Various crash fixes and stability improvements. Various fixes for running on Linux with SDL_VIDEODRIVER=wayland.",
+        "like": "11,867"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 8",
+        "content": " Fixed a case where mission progress appeared to be reset when reconnecting to a match in-progress. Grail: Updated to the latest version from the Community Workshop (Update Notes). Updated to the latest version from the Community Workshop (Update Notes). Fixed a case where fire was visible through smoke. Various UI sound bug fixes and tweaks. Various crash fixes and stability improvements.",
+        "like": "19,614"
+      },
+      {
+        "news_title": "Mission Possible",
+        "date": "May 7",
+        "content": "Today's update includes several community maps, a rearranging of casual and deathmatch map groups, and the introduction of weekly missions!Your mission, should you choose to accept it, can be completed for bonus XP. Each week you'll get a new mission, and you can access your mission in the Main Menu and in the Play Menu.Today we welcome a host of new community maps: Jura, Grail and Agency have been added to Competitive, Casual, and Deathmatch modes, and Dogtown and Brewery have been added to Wingman. And it's easier than ever to play community maps—Jura, Grail, and Agency can be found in the new Community Map Group.[carousel][/carousel] All this and more (particularly for fans of binding keys to \"/\") in today's update, so jump into some community maps and see what's new!",
+        "like": "28,362"
+      },
+      {
+        "news_title": "Counter-Strike 2 Update",
+        "date": "May 7",
+        "content": " Added Weekly Missions, which can be entered though the main menu or play menu. Players receive one mission each week. The weekly mission expires after 7 days and rewards XP for completion. Removed community maps Basalt, Edin, Palais, and Whistle from all game modes. Added community maps Jura, Grail, and Agency to Competitive, Casual, and Deathmatch modes. Added community maps Dogtown and Brewery to Wingman mode. Re-organized Casual and Deathmatch map groups. Defusal Group Alpha: Dust 2, Mirage, Inferno, Vertigo. Defusal Group Delta: Train, Anubis, Ancient, Overpass, Nuke. Community Map Group: Jura, Grail, Agency. Hostage Group: Office, Italy. Defusal Group Alpha: Dust 2, Mirage, Inferno, Vertigo. Defusal Group Delta: Train, Anubis, Ancient, Overpass, Nuke. Community Map Group: Jura, Grail, Agency. Hostage Group: Office, Italy. Added \"Main Menu Ambience Volume\" setting. Fixed some cases where shooting visible enemies over the top of smoke would not play an attacker feedback sound. Fixed some cases where gameplay sounds were inaudible or would skip. Removed snd_setmixer, snd_setmixlayer, snd_soundmixer_setmixlayer_amount, and snd_soundmixer_set_trigger_factor console commands. Fixed a bug where input bindings to scancode56 (US English key \"/\") wouldn't persist across app launches. Lobby invites from players marked with \"Block All Communication\" in Steam will now be ignored in-game.",
+        "like": "11,021"
+      }
+    ],
+    "limit": "10",
+    "offset": "0"
+  }
+}

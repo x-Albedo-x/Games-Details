@@ -1,0 +1,94 @@
+body {
+    padding: 0;
+}
+
+body::before {
+    animation: none;
+}
+
+.content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner h1 {
+    font-size: 3.3rem;
+    background: linear-gradient(135deg, #66d9ef 0%, #a6e3a1 50%, #f9e2af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 3s ease-in-out infinite alternate;
+    margin-bottom: 20px;
+}
+
+.banner h5 {
+    font-size: 1.1rem;
+}
+
+.sign-form {
+    width: 400px;
+    margin-bottom: 0;
+    /*margin-right: 4px;*/
+}
+
+.sign-form h1 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-label {
+    text-align: left;
+    width: 100%;
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+
+.form-button {
+    width: 100%;
+    margin-top: 34px;
+}
+
+.section {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 217, 239, 0.3);
+}
+
+.section::before {
+  opacity: 1;
+}
+
+.form-legend {
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.form-legend:hover {
+    cursor: pointer;
+}
+
+#signInForm, #signUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
